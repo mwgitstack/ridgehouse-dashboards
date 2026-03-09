@@ -1,0 +1,308 @@
+/* Ridgehouse Companies — Airtame Dashboard Stylesheet */
+/* Dark theme, TV-optimized, readable from 15+ feet */
+
+@import url('https://fonts.googleapis.com/css2?family=Space+Mono&family=Red+Hat+Text:ital,wght@0,400;0,500;0,700;1,400&display=swap');
+
+:root {
+  /* Brand Colors */
+  --black: #000000;
+  --concrete: #E6E6E6;
+  --copper-dark: #A0503C;
+  --copper-light: #F49466;
+  --deep-sage: #505A48;
+
+  /* Dashboard Colors */
+  --bg-primary: #0d0d0d;
+  --bg-card: #1a1a1a;
+  --bg-card-hover: #222222;
+  --text-primary: #E6E6E6;
+  --text-secondary: #999999;
+  --text-muted: #666666;
+  --border: #2a2a2a;
+
+  /* Status Colors */
+  --green: #4ade80;
+  --green-bg: rgba(74, 222, 128, 0.1);
+  --yellow: #facc15;
+  --yellow-bg: rgba(250, 204, 21, 0.1);
+  --red: #f87171;
+  --red-bg: rgba(248, 113, 113, 0.1);
+  --blue: #60a5fa;
+
+  /* Typography */
+  --font-headline: 'Space Mono', monospace;
+  --font-body: 'Red Hat Text', sans-serif;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body {
+  width: 1920px;
+  height: 1080px;
+  overflow: hidden;
+  background: var(--bg-primary);
+  color: var(--text-primary);
+  font-family: var(--font-body);
+  font-size: 24px;
+  line-height: 1.4;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Page Layout */
+.dashboard {
+  width: 1920px;
+  height: 1080px;
+  padding: 40px 48px;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Header */
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 32px;
+  padding-bottom: 20px;
+  border-bottom: 2px solid var(--copper-dark);
+}
+
+.header-left {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.header-logo {
+  width: 48px;
+  height: 42px;
+}
+
+.header-title {
+  font-family: var(--font-headline);
+  font-size: 36px;
+  letter-spacing: -0.5px;
+  color: var(--text-primary);
+}
+
+.header-subtitle {
+  font-family: var(--font-body);
+  font-weight: 500;
+  font-size: 18px;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  color: var(--copper-light);
+}
+
+.header-date {
+  font-family: var(--font-body);
+  font-size: 20px;
+  color: var(--text-secondary);
+  text-align: right;
+}
+
+.header-date .date-label {
+  font-size: 14px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: var(--text-muted);
+}
+
+/* Content area fills remaining space */
+.content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  min-height: 0;
+}
+
+/* Card Grid */
+.card-grid {
+  display: grid;
+  gap: 24px;
+}
+
+.card-grid-2 { grid-template-columns: 1fr 1fr; }
+.card-grid-3 { grid-template-columns: 1fr 1fr 1fr; }
+.card-grid-4 { grid-template-columns: 1fr 1fr 1fr 1fr; }
+
+/* Cards */
+.card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 28px;
+  display: flex;
+  flex-direction: column;
+}
+
+.card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+}
+
+.card-title {
+  font-family: var(--font-body);
+  font-weight: 700;
+  font-size: 22px;
+  color: var(--text-primary);
+}
+
+.card-location {
+  font-size: 16px;
+  color: var(--text-secondary);
+}
+
+/* Metric Tiles */
+.metric-row {
+  display: grid;
+  gap: 24px;
+}
+
+.metric-tile {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 28px 32px;
+  text-align: center;
+}
+
+.metric-value {
+  font-family: var(--font-headline);
+  font-size: 56px;
+  color: var(--text-primary);
+  line-height: 1.1;
+}
+
+.metric-label {
+  font-family: var(--font-body);
+  font-weight: 500;
+  font-size: 16px;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  color: var(--text-secondary);
+  margin-top: 8px;
+}
+
+.metric-sublabel {
+  font-size: 14px;
+  color: var(--text-muted);
+  margin-top: 4px;
+}
+
+/* Status Badges */
+.badge {
+  display: inline-block;
+  padding: 4px 12px;
+  border-radius: 20px;
+  font-size: 14px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.badge-green { background: var(--green-bg); color: var(--green); }
+.badge-yellow { background: var(--yellow-bg); color: var(--yellow); }
+.badge-red { background: var(--red-bg); color: var(--red); }
+
+/* Progress Bars */
+.progress-bar {
+  width: 100%;
+  height: 12px;
+  background: var(--border);
+  border-radius: 6px;
+  overflow: hidden;
+  margin: 8px 0;
+}
+
+.progress-fill {
+  height: 100%;
+  border-radius: 6px;
+  transition: width 0.3s ease;
+}
+
+.progress-green { background: var(--green); }
+.progress-yellow { background: var(--yellow); }
+.progress-red { background: var(--red); }
+.progress-copper { background: var(--copper-light); }
+
+/* Tables */
+.table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.table th {
+  font-family: var(--font-body);
+  font-weight: 500;
+  font-size: 14px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: var(--text-muted);
+  text-align: left;
+  padding: 8px 12px;
+  border-bottom: 1px solid var(--border);
+}
+
+.table td {
+  font-size: 20px;
+  padding: 12px;
+  border-bottom: 1px solid var(--border);
+  vertical-align: middle;
+}
+
+.table tr:last-child td {
+  border-bottom: none;
+}
+
+/* Sentiment indicators */
+.sentiment-dot {
+  display: inline-block;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  margin-right: 8px;
+}
+
+.sentiment-positive { background: var(--green); }
+.sentiment-concerned { background: var(--red); }
+.sentiment-neutral { background: var(--yellow); }
+
+/* Footer */
+.footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 16px;
+  margin-top: auto;
+  border-top: 1px solid var(--border);
+  font-size: 14px;
+  color: var(--text-muted);
+}
+
+.footer-brand {
+  font-family: var(--font-headline);
+  font-size: 14px;
+  letter-spacing: 2px;
+  color: var(--text-secondary);
+}
+
+/* Utility */
+.text-green { color: var(--green); }
+.text-yellow { color: var(--yellow); }
+.text-red { color: var(--red); }
+.text-copper { color: var(--copper-light); }
+.text-muted { color: var(--text-muted); }
+.text-right { text-align: right; }
+.text-center { text-align: center; }
+.font-mono { font-family: var(--font-headline); }
+.mt-auto { margin-top: auto; }
+.gap-sm { gap: 12px; }
+.gap-md { gap: 24px; }

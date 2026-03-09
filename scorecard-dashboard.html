@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=1920">
+  <meta http-equiv="refresh" content="3600">
+  <title>Company Scorecard — Ridgehouse Companies</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    /* Scorecard-specific overrides */
+    .scorecard-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 28px;
+      flex: 1;
+    }
+
+    .scorecard-tile {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 36px 32px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+    }
+
+    .scorecard-tile .tile-label {
+      font-family: var(--font-body);
+      font-weight: 700;
+      font-size: 18px;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      color: var(--text-secondary);
+      margin-bottom: 16px;
+    }
+
+    .scorecard-tile .tile-value {
+      font-family: var(--font-headline);
+      font-size: 80px;
+      line-height: 1;
+      color: var(--text-primary);
+    }
+
+    .scorecard-tile .tile-sublabel {
+      font-family: var(--font-body);
+      font-size: 18px;
+      color: var(--text-muted);
+      margin-top: 12px;
+    }
+  </style>
+</head>
+<body>
+  <div class="dashboard">
+
+    <!-- Header -->
+    <div class="header">
+      <div class="header-left">
+        <svg class="header-logo" viewBox="0 0 510 435">
+          <path d="M310,181.5V110L110,180V325H400V150ZM120,315V187.09l180-63V185L200,220v95Zm90,0V227.09l90-31.5V315Zm180,0H310V192.09l80-28Z" fill="white"/>
+        </svg>
+        <div>
+          <div class="header-title">RIDGEHOUSE COMPANIES</div>
+          <div class="header-subtitle">Company Scorecard</div>
+        </div>
+      </div>
+      <div class="header-date">
+        <div class="date-label">Week Ending</div>
+        March 8, 2026
+      </div>
+    </div>
+
+    <!-- Metric Tiles -->
+    <div class="scorecard-grid">
+
+      <!-- Row 1 -->
+      <div class="scorecard-tile">
+        <div class="tile-label">Total Portfolio</div>
+        <div class="tile-value">2,500+</div>
+        <div class="tile-sublabel">13 Projects</div>
+      </div>
+
+      <div class="scorecard-tile">
+        <div class="tile-label">Portfolio Occupancy</div>
+        <div class="tile-value text-yellow">70.9%</div>
+        <div class="tile-sublabel">529 of 746 lease-up units</div>
+      </div>
+
+      <div class="scorecard-tile">
+        <div class="tile-label">Units Under Construction</div>
+        <div class="tile-value">696</div>
+        <div class="tile-sublabel">3 Active Projects</div>
+      </div>
+
+      <!-- Row 2 -->
+      <div class="scorecard-tile">
+        <div class="tile-label">Active Lease-Ups</div>
+        <div class="tile-value">4</div>
+        <div class="tile-sublabel">746 units in lease-up</div>
+      </div>
+
+      <div class="scorecard-tile">
+        <div class="tile-label">Weekly Net Leases</div>
+        <div class="tile-value text-green">15</div>
+        <div class="tile-sublabel">Week of Mar 8, 2026</div>
+      </div>
+
+      <div class="scorecard-tile">
+        <div class="tile-label">Gap to 90% Goal</div>
+        <div class="tile-value text-red">138</div>
+        <div class="tile-sublabel">units across 4 properties</div>
+      </div>
+
+    </div>
+
+    <!-- Footer -->
+    <div class="footer">
+      <div class="footer-brand">RIDGEHOUSE COMPANIES</div>
+      <div>Data as of March 8, 2026</div>
+    </div>
+
+  </div>
+</body>
+</html>

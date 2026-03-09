@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="refresh" content="3600">
+  <title>Ridgehouse Companies</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    /* Brand slide overrides */
+    html, body {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    /* Subtle concrete texture */
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background:
+        radial-gradient(ellipse 800px 600px at 50% 40%, rgba(244, 148, 102, 0.03) 0%, transparent 70%),
+        radial-gradient(circle 1200px at 30% 70%, rgba(80, 90, 72, 0.04) 0%, transparent 60%),
+        radial-gradient(circle 400px at 80% 20%, rgba(244, 148, 102, 0.02) 0%, transparent 50%);
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    /* Noise texture overlay */
+    body::after {
+      content: '';
+      position: fixed;
+      inset: 0;
+      opacity: 0.025;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+      background-size: 256px 256px;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .brand-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      z-index: 1;
+      gap: 0;
+    }
+
+    .brand-logo {
+      width: auto;
+      height: 220px;
+      margin-bottom: 48px;
+    }
+
+    .brand-name {
+      font-family: var(--font-headline);
+      font-size: 48px;
+      color: var(--text-primary);
+      letter-spacing: 6px;
+      text-transform: uppercase;
+      margin-bottom: 32px;
+    }
+
+    .brand-divider {
+      width: 200px;
+      height: 1px;
+      background: var(--copper-light);
+      border: none;
+      margin-bottom: 32px;
+      opacity: 0.6;
+    }
+
+    .brand-tagline {
+      font-family: var(--font-body);
+      font-size: 24px;
+      font-style: italic;
+      color: var(--copper-light);
+    }
+
+    .brand-url {
+      position: fixed;
+      bottom: 48px;
+      left: 50%;
+      transform: translateX(-50%);
+      font-family: var(--font-body);
+      font-size: 14px;
+      color: var(--text-muted);
+      letter-spacing: 1px;
+      z-index: 1;
+    }
+  </style>
+</head>
+<body>
+  <div class="brand-container">
+    <svg class="brand-logo" viewBox="0 0 510 435">
+      <path d="M310,181.5V110L110,180V325H400V150ZM120,315V187.09l180-63V185L200,220v95Zm90,0V227.09l90-31.5V315Zm180,0H310V192.09l80-28Z" fill="#F49466"/>
+    </svg>
+    <div class="brand-name">Ridgehouse Companies</div>
+    <hr class="brand-divider">
+    <div class="brand-tagline">We build forward.</div>
+  </div>
+  <div class="brand-url">ridgehouseco.com</div>
+</body>
+</html>

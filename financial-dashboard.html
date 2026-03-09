@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=1920, height=1080">
+  <meta http-equiv="refresh" content="3600">
+  <title>Financial Overview — Ridgehouse Companies</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="dashboard">
+
+    <!-- HEADER -->
+    <header class="header">
+      <div class="header-left">
+        <svg class="logo" viewBox="0 0 510 435" width="56" height="48">
+          <path d="M310,181.5V110L110,180V325H400V150ZM120,315V187.09l180-63V185L200,220v95Zm90,0V227.09l90-31.5V315Zm180,0H310V192.09l80-28Z" fill="white"/>
+        </svg>
+        <h1 class="header-title">FINANCIAL OVERVIEW</h1>
+      </div>
+      <div class="header-date" id="headerDate"></div>
+    </header>
+
+    <!-- MAIN CONTENT -->
+    <div class="content">
+
+      <!-- LEFT COLUMN -->
+      <div class="col-left">
+
+        <!-- Portfolio Summary -->
+        <section class="section">
+          <h2 class="section-title">Portfolio Summary</h2>
+          <div class="metrics-grid">
+            <div class="metric-tile">
+              <span class="metric-label">Total Assets</span>
+              <span class="metric-value">~$600M</span>
+            </div>
+            <div class="metric-tile">
+              <span class="metric-label">Total Portfolio</span>
+              <span class="metric-value">~2,500 <span class="metric-unit">units / 13 projects</span></span>
+            </div>
+            <div class="metric-tile">
+              <span class="metric-label">Total Debt</span>
+              <span class="metric-value">~$298M</span>
+            </div>
+            <div class="metric-tile">
+              <span class="metric-label">Wtd Avg LTC</span>
+              <span class="metric-value">~60%</span>
+            </div>
+          </div>
+        </section>
+
+        <!-- Property Status Breakdown -->
+        <section class="section">
+          <h2 class="section-title">Property Status</h2>
+          <div class="status-list">
+            <div class="status-row">
+              <div class="status-dots">
+                <span class="dot dot-green"></span>
+                <span class="dot dot-green"></span>
+              </div>
+              <div class="status-info">
+                <span class="status-label">Stabilized</span>
+                <span class="status-detail">The Rockwell, The Oliver</span>
+              </div>
+              <span class="status-count">2</span>
+            </div>
+            <div class="status-row">
+              <div class="status-dots">
+                <span class="dot dot-yellow"></span>
+                <span class="dot dot-yellow"></span>
+                <span class="dot dot-yellow"></span>
+                <span class="dot dot-yellow"></span>
+              </div>
+              <div class="status-info">
+                <span class="status-label">Lease-Up</span>
+                <span class="status-detail">Somerset, Avery, Coda, Norwood</span>
+              </div>
+              <span class="status-count">4</span>
+            </div>
+            <div class="status-row">
+              <div class="status-dots">
+                <span class="dot dot-copper"></span>
+                <span class="dot dot-copper"></span>
+              </div>
+              <div class="status-info">
+                <span class="status-label">Under Construction</span>
+                <span class="status-detail">Aster (Knoxville), Renza (Statesville)</span>
+              </div>
+              <span class="status-count">2</span>
+            </div>
+            <div class="status-row">
+              <div class="status-dots">
+                <span class="dot dot-blue"></span>
+              </div>
+              <div class="status-info">
+                <span class="status-label">Pre-Construction</span>
+                <span class="status-detail">Hawk Ridge</span>
+              </div>
+              <span class="status-count">1</span>
+            </div>
+          </div>
+        </section>
+
+      </div>
+
+      <!-- RIGHT COLUMN -->
+      <div class="col-right">
+        <section class="section">
+          <h2 class="section-title">Debt Portfolio</h2>
+          <table class="debt-table">
+            <thead>
+              <tr>
+                <th>Property</th>
+                <th>Lender</th>
+                <th class="col-right-align">Debt</th>
+                <th>Rate</th>
+                <th>Maturity</th>
+                <th>Status</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr class="row-matured">
+                <td>The Oliver</td>
+                <td>Enterprise Bank</td>
+                <td class="col-right-align">$20.0M</td>
+                <td>Libor+260</td>
+                <td class="maturity-red">Aug 2025</td>
+                <td><span class="badge badge-red">MATURED</span></td>
+              </tr>
+              <tr>
+                <td>The Rockwell</td>
+                <td>Simmons Bank</td>
+                <td class="col-right-align">$19.0M</td>
+                <td>Prime+50</td>
+                <td class="maturity-yellow">Jul 2026</td>
+                <td><span class="badge badge-green">Stabilized</span></td>
+              </tr>
+              <tr>
+                <td>Statler (Surprise)</td>
+                <td>Great Southern</td>
+                <td class="col-right-align">$34.6M</td>
+                <td>SOFR+Prime</td>
+                <td class="maturity-yellow">May 2027</td>
+                <td><span class="badge badge-green">Stabilized</span></td>
+              </tr>
+              <tr>
+                <td>The Somerset</td>
+                <td>Stifel Bank</td>
+                <td class="col-right-align">$43.0M</td>
+                <td>SOFR+300</td>
+                <td>Dec 2027</td>
+                <td><span class="badge badge-yellow">Lease Up</span></td>
+              </tr>
+              <tr>
+                <td>The Coda</td>
+                <td>DPI-ACRES</td>
+                <td class="col-right-align">$30.5M</td>
+                <td>SOFR+285</td>
+                <td>May 2028</td>
+                <td><span class="badge badge-yellow">Lease Up</span></td>
+              </tr>
+              <tr>
+                <td>The Norwood</td>
+                <td>Orix RE</td>
+                <td class="col-right-align">$24.0M</td>
+                <td>SOFR+315</td>
+                <td>Oct 2028</td>
+                <td><span class="badge badge-yellow">Lease Up</span></td>
+              </tr>
+              <tr>
+                <td>The Avery</td>
+                <td>Kairos Credit</td>
+                <td class="col-right-align">$42.9M</td>
+                <td>SOFR+410</td>
+                <td>Dec 2028</td>
+                <td><span class="badge badge-yellow">Lease Up</span></td>
+              </tr>
+              <tr>
+                <td>Renza (Statesville)</td>
+                <td>Old National</td>
+                <td class="col-right-align">$50.0M</td>
+                <td>SOFR+295</td>
+                <td>Jun 2029</td>
+                <td><span class="badge badge-copper">Construction</span></td>
+              </tr>
+              <tr>
+                <td>Aster (Knoxville)</td>
+                <td>UMB</td>
+                <td class="col-right-align">$33.4M</td>
+                <td>SOFR+290</td>
+                <td>TBD</td>
+                <td><span class="badge badge-copper">Construction</span></td>
+              </tr>
+            </tbody>
+          </table>
+        </section>
+      </div>
+
+    </div>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+      <span class="footer-brand">RIDGEHOUSE COMPANIES</span>
+      <span class="footer-date">Data as of March 2026</span>
+    </footer>
+
+  </div>
+
+  <script>
+    // Set header date
+    const now = new Date();
+    const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+    document.getElementById('headerDate').textContent = now.toLocaleDateString('en-US', options);
+  </script>
+</body>
+</html>

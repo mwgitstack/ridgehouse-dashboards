@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=1920">
+  <meta http-equiv="refresh" content="3600">
+  <title>Team Wins & Announcements — Ridgehouse Companies</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    /* Announcements-specific styles */
+    .two-col {
+      display: grid;
+      grid-template-columns: 55% 45%;
+      gap: 32px;
+      flex: 1;
+      min-height: 0;
+    }
+
+    .column {
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+      min-height: 0;
+    }
+
+    .section-title {
+      font-family: var(--font-body);
+      font-weight: 700;
+      font-size: 20px;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      color: var(--copper-light);
+      margin-bottom: 4px;
+    }
+
+    /* Win / Announcement Items */
+    .win-list {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .win-item {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 22px 28px;
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      border-left: 5px solid var(--copper-light);
+    }
+
+    .win-icon {
+      font-size: 32px;
+      flex-shrink: 0;
+      width: 40px;
+      text-align: center;
+    }
+
+    .win-text {
+      font-size: 24px;
+      line-height: 1.35;
+      color: var(--text-primary);
+    }
+
+    /* Upcoming Events */
+    .event-list {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .event-item {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 18px 24px;
+      font-size: 22px;
+      color: var(--text-primary);
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .event-bullet {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: var(--copper-light);
+      flex-shrink: 0;
+    }
+
+    /* Company Snapshot */
+    .snapshot-box {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 28px;
+    }
+
+    .snapshot-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px 32px;
+      margin-bottom: 20px;
+    }
+
+    .snapshot-stat {
+      text-align: center;
+    }
+
+    .snapshot-value {
+      font-family: var(--font-headline);
+      font-size: 42px;
+      color: var(--text-primary);
+      line-height: 1.1;
+    }
+
+    .snapshot-label {
+      font-size: 15px;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      color: var(--text-secondary);
+      margin-top: 4px;
+    }
+
+    .snapshot-tagline {
+      text-align: center;
+      font-family: var(--font-headline);
+      font-size: 20px;
+      letter-spacing: 3px;
+      color: var(--copper-light);
+      padding-top: 16px;
+      border-top: 1px solid var(--border);
+    }
+  </style>
+</head>
+<body>
+  <div class="dashboard">
+
+    <!-- Header -->
+    <div class="header">
+      <div class="header-left">
+        <svg class="header-logo" viewBox="0 0 510 435">
+          <path d="M310,181.5V110L110,180V325H400V150ZM120,315V187.09l180-63V185L200,220v95Zm90,0V227.09l90-31.5V315Zm180,0H310V192.09l80-28Z" fill="white"/>
+        </svg>
+        <div>
+          <div class="header-title">RIDGEHOUSE COMPANIES</div>
+          <div class="header-subtitle">Team Wins & Announcements</div>
+        </div>
+      </div>
+      <div class="header-date">
+        <div class="date-label">Updated</div>
+        March 2026
+      </div>
+    </div>
+
+    <!-- Two-Column Layout -->
+    <div class="two-col">
+
+      <!-- LEFT COLUMN: Recent Wins & Milestones -->
+      <div class="column">
+        <div class="section-title">Recent Wins & Milestones</div>
+        <div class="win-list">
+
+          <!-- ============================================ -->
+          <!-- WINS: Edit, add, or remove items below.      -->
+          <!-- Copy a <div class="win-item"> block to add.  -->
+          <!-- Icons: green checkmark ✅  |  copper star ⭐  -->
+          <!-- ============================================ -->
+
+          <div class="win-item">
+            <div class="win-icon text-green">&#10003;</div>
+            <div class="win-text">The Avery hits 8 net leases this week — exceeding goal by 4</div>
+          </div>
+
+          <div class="win-item">
+            <div class="win-icon text-green">&#10003;</div>
+            <div class="win-text">The Norwood reaches 76% occupancy — on pace for stabilization</div>
+          </div>
+
+          <div class="win-item">
+            <div class="win-icon text-copper">&#9733;</div>
+            <div class="win-text">Emily Bullock completes first quarter as Director of Finance</div>
+          </div>
+
+          <div class="win-item">
+            <div class="win-icon text-copper">&#9733;</div>
+            <div class="win-text">Aster vertical construction progressing on schedule in Knoxville</div>
+          </div>
+
+          <div class="win-item">
+            <div class="win-icon text-copper">&#9733;</div>
+            <div class="win-text">Weekly leasing intelligence dashboard launched company-wide</div>
+          </div>
+
+          <!-- END WINS -->
+
+        </div>
+      </div>
+
+      <!-- RIGHT COLUMN: Upcoming + Snapshot -->
+      <div class="column">
+
+        <!-- Upcoming Events -->
+        <div>
+          <div class="section-title">Upcoming</div>
+          <div class="event-list">
+
+            <!-- ============================================ -->
+            <!-- EVENTS: Edit, add, or remove items below.    -->
+            <!-- Copy a <div class="event-item"> block to add.-->
+            <!-- ============================================ -->
+
+            <div class="event-item">
+              <div class="event-bullet"></div>
+              Q1 2026 Rocks Review — March 31
+            </div>
+
+            <div class="event-item">
+              <div class="event-bullet"></div>
+              OZ 2.0 Fund Strategy Session — April (TBD)
+            </div>
+
+            <div class="event-item">
+              <div class="event-bullet"></div>
+              Hawk Ridge Financing — Q2 2026
+            </div>
+
+            <!-- END EVENTS -->
+
+          </div>
+        </div>
+
+        <!-- Company Snapshot -->
+        <div class="mt-auto">
+          <div class="section-title">Company Snapshot</div>
+          <div class="snapshot-box">
+            <div class="snapshot-grid">
+
+              <!-- ============================================ -->
+              <!-- SNAPSHOT: Update numbers as needed.          -->
+              <!-- ============================================ -->
+
+              <div class="snapshot-stat">
+                <div class="snapshot-value">~25</div>
+                <div class="snapshot-label">Team Members</div>
+              </div>
+
+              <div class="snapshot-stat">
+                <div class="snapshot-value">13</div>
+                <div class="snapshot-label">Projects</div>
+              </div>
+
+              <div class="snapshot-stat">
+                <div class="snapshot-value">4</div>
+                <div class="snapshot-label">Markets</div>
+              </div>
+
+              <div class="snapshot-stat">
+                <div class="snapshot-value font-mono" style="font-size: 16px; letter-spacing: 1px; padding-top: 12px;">
+                  Nashville<br>Huntsville<br>Phoenix<br>Knoxville
+                </div>
+                <div class="snapshot-label"></div>
+              </div>
+
+              <!-- END SNAPSHOT -->
+
+            </div>
+            <div class="snapshot-tagline">BUILD FORWARD</div>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+
+    <!-- Footer -->
+    <div class="footer">
+      <div class="footer-brand">RIDGEHOUSE COMPANIES</div>
+      <div>Updated March 2026</div>
+    </div>
+
+  </div>
+</body>
+</html>

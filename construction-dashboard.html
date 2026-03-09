@@ -1,0 +1,498 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=1920, height=1080">
+  <meta http-equiv="refresh" content="3600">
+  <title>Active Construction Projects — Ridgehouse Construction</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    html, body {
+      width: 1920px;
+      height: 1080px;
+      overflow: hidden;
+      background: #0d0d0d;
+      color: #E6E6E6;
+      font-family: 'Red Hat Text', sans-serif;
+      font-size: 16px;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .dashboard {
+      width: 1920px;
+      height: 1080px;
+      display: flex;
+      flex-direction: column;
+      padding: 28px 40px 20px;
+    }
+
+    /* ---- HEADER ---- */
+    .header {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      margin-bottom: 24px;
+      flex-shrink: 0;
+    }
+
+    .header-logo svg {
+      width: 56px;
+      height: 48px;
+    }
+
+    .header-text {
+      flex: 1;
+    }
+
+    .header-title {
+      font-family: 'Space Mono', monospace;
+      font-size: 32px;
+      font-weight: 700;
+      letter-spacing: 6px;
+      text-transform: uppercase;
+      color: #E6E6E6;
+    }
+
+    .header-subtitle {
+      font-family: 'Space Mono', monospace;
+      font-size: 14px;
+      font-weight: 400;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      color: #F49466;
+      margin-top: 2px;
+    }
+
+    .header-date {
+      font-family: 'Space Mono', monospace;
+      font-size: 14px;
+      color: #888;
+      letter-spacing: 1px;
+      text-align: right;
+      white-space: nowrap;
+    }
+
+    /* ---- CARDS ROW ---- */
+    .cards {
+      display: flex;
+      gap: 24px;
+      flex: 1;
+      min-height: 0;
+    }
+
+    .card {
+      flex: 1;
+      background: #1a1a1a;
+      border-radius: 16px;
+      padding: 28px 28px 24px;
+      display: flex;
+      flex-direction: column;
+      position: relative;
+      border: 1px solid #2a2a2a;
+    }
+
+    .card-header {
+      margin-bottom: 20px;
+    }
+
+    .card-name {
+      font-family: 'Space Mono', monospace;
+      font-size: 34px;
+      font-weight: 700;
+      color: #fff;
+      letter-spacing: 2px;
+    }
+
+    .card-location {
+      font-size: 16px;
+      color: #999;
+      margin-top: 4px;
+      letter-spacing: 0.5px;
+    }
+
+    /* Status badge */
+    .badge {
+      position: absolute;
+      top: 24px;
+      right: 24px;
+      font-family: 'Space Mono', monospace;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      padding: 6px 14px;
+      border-radius: 6px;
+    }
+
+    .badge--yellow {
+      background: rgba(250, 204, 21, 0.15);
+      color: #facc15;
+      border: 1px solid rgba(250, 204, 21, 0.3);
+    }
+
+    .badge--blue {
+      background: rgba(96, 165, 250, 0.15);
+      color: #60a5fa;
+      border: 1px solid rgba(96, 165, 250, 0.3);
+    }
+
+    /* Progress section */
+    .progress-section {
+      margin-bottom: 20px;
+    }
+
+    .progress-label {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      margin-bottom: 8px;
+    }
+
+    .progress-label-text {
+      font-size: 13px;
+      color: #888;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+    }
+
+    .progress-pct {
+      font-family: 'Space Mono', monospace;
+      font-size: 36px;
+      font-weight: 700;
+      color: #F49466;
+    }
+
+    .progress-bar-track {
+      width: 100%;
+      height: 14px;
+      background: #2a2a2a;
+      border-radius: 7px;
+      overflow: hidden;
+    }
+
+    .progress-bar-fill {
+      height: 100%;
+      border-radius: 7px;
+      background: linear-gradient(90deg, #A0503C, #F49466);
+      transition: width 0.6s ease;
+    }
+
+    /* Data rows */
+    .card-data {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      margin-top: 4px;
+    }
+
+    .data-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0 2px;
+    }
+
+    .data-row-label {
+      font-size: 14px;
+      color: #777;
+      letter-spacing: 0.3px;
+    }
+
+    .data-row-value {
+      font-size: 16px;
+      font-weight: 600;
+      color: #E6E6E6;
+      text-align: right;
+    }
+
+    .data-divider {
+      border: none;
+      border-top: 1px solid #2a2a2a;
+      margin: 2px 0;
+    }
+
+    /* Milestone */
+    .milestone {
+      margin-top: auto;
+      padding-top: 16px;
+      border-top: 1px solid #2a2a2a;
+    }
+
+    .milestone-label {
+      font-size: 11px;
+      color: #666;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      margin-bottom: 6px;
+    }
+
+    .milestone-text {
+      font-size: 16px;
+      color: #F49466;
+      font-weight: 500;
+    }
+
+    /* ---- SUMMARY BAR ---- */
+    .summary {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 60px;
+      background: #1a1a1a;
+      border-radius: 12px;
+      padding: 16px 40px;
+      margin-top: 20px;
+      flex-shrink: 0;
+      border: 1px solid #2a2a2a;
+    }
+
+    .summary-item {
+      display: flex;
+      align-items: baseline;
+      gap: 10px;
+    }
+
+    .summary-value {
+      font-family: 'Space Mono', monospace;
+      font-size: 28px;
+      font-weight: 700;
+      color: #F49466;
+    }
+
+    .summary-label {
+      font-size: 14px;
+      color: #888;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+    }
+
+    .summary-divider {
+      width: 1px;
+      height: 32px;
+      background: #333;
+    }
+
+    /* ---- FOOTER ---- */
+    .footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: 14px;
+      flex-shrink: 0;
+    }
+
+    .footer-left {
+      font-family: 'Space Mono', monospace;
+      font-size: 13px;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      color: #555;
+    }
+
+    .footer-right {
+      font-size: 13px;
+      color: #555;
+      letter-spacing: 0.5px;
+    }
+  </style>
+</head>
+<body>
+  <div class="dashboard">
+
+    <!-- HEADER -->
+    <div class="header">
+      <div class="header-logo">
+        <svg viewBox="0 0 510 435"><path d="M310,181.5V110L110,180V325H400V150ZM120,315V187.09l180-63V185L200,220v95Zm90,0V227.09l90-31.5V315Zm180,0H310V192.09l80-28Z" fill="white"/></svg>
+      </div>
+      <div class="header-text">
+        <div class="header-title">Active Construction</div>
+        <div class="header-subtitle">Ridgehouse Construction</div>
+      </div>
+      <div class="header-date">
+        <script>
+          const now = new Date();
+          const months = ['January','February','March','April','May','June','July','August','September','October','November','December'];
+          document.write(months[now.getMonth()] + ' ' + now.getDate() + ', ' + now.getFullYear());
+        </script>
+      </div>
+    </div>
+
+    <!-- PROJECT CARDS -->
+    <div class="cards">
+
+      <!-- ASTER -->
+      <div class="card">
+        <span class="badge badge--yellow">Under Construction</span>
+        <div class="card-header">
+          <div class="card-name">Aster</div>
+          <div class="card-location">Knoxville, TN</div>
+        </div>
+        <div class="progress-section">
+          <div class="progress-label">
+            <span class="progress-label-text">Progress</span>
+            <span class="progress-pct">51.5%</span>
+          </div>
+          <div class="progress-bar-track">
+            <div class="progress-bar-fill" style="width: 51.5%"></div>
+          </div>
+        </div>
+        <div class="card-data">
+          <div class="data-row">
+            <span class="data-row-label">Units</span>
+            <span class="data-row-value">194</span>
+          </div>
+          <hr class="data-divider">
+          <div class="data-row">
+            <span class="data-row-label">Contract</span>
+            <span class="data-row-value">$50.0M</span>
+          </div>
+          <hr class="data-divider">
+          <div class="data-row">
+            <span class="data-row-label">Lender</span>
+            <span class="data-row-value">UMB</span>
+          </div>
+          <hr class="data-divider">
+          <div class="data-row">
+            <span class="data-row-label">Est. Completion</span>
+            <span class="data-row-value">Q4 2026</span>
+          </div>
+          <hr class="data-divider">
+          <div class="data-row">
+            <span class="data-row-label">GC</span>
+            <span class="data-row-value">Ridgehouse Construction</span>
+          </div>
+        </div>
+        <div class="milestone">
+          <div class="milestone-label">Key Milestone</div>
+          <div class="milestone-text">Vertical construction in progress</div>
+        </div>
+      </div>
+
+      <!-- RENZA -->
+      <div class="card">
+        <span class="badge badge--yellow">Under Construction</span>
+        <div class="card-header">
+          <div class="card-name">Renza</div>
+          <div class="card-location">Statesville, NC</div>
+        </div>
+        <div class="progress-section">
+          <div class="progress-label">
+            <span class="progress-label-text">Progress</span>
+            <span class="progress-pct">58.5%</span>
+          </div>
+          <div class="progress-bar-track">
+            <div class="progress-bar-fill" style="width: 58.5%"></div>
+          </div>
+        </div>
+        <div class="card-data">
+          <div class="data-row">
+            <span class="data-row-label">Units</span>
+            <span class="data-row-value">334</span>
+          </div>
+          <hr class="data-divider">
+          <div class="data-row">
+            <span class="data-row-label">Contract</span>
+            <span class="data-row-value">$61.0M</span>
+          </div>
+          <hr class="data-divider">
+          <div class="data-row">
+            <span class="data-row-label">Lender</span>
+            <span class="data-row-value">Old National Bank</span>
+          </div>
+          <hr class="data-divider">
+          <div class="data-row">
+            <span class="data-row-label">Est. Completion</span>
+            <span class="data-row-value">Q2 2027</span>
+          </div>
+          <hr class="data-divider">
+          <div class="data-row">
+            <span class="data-row-label">GC</span>
+            <span class="data-row-value">Ridgehouse Construction</span>
+          </div>
+        </div>
+        <div class="milestone">
+          <div class="milestone-label">Key Milestone</div>
+          <div class="milestone-text">Site work and foundations</div>
+        </div>
+      </div>
+
+      <!-- HAWK RIDGE (Phase 1 — "Montage") -->
+      <div class="card">
+        <span class="badge badge--yellow">Under Construction</span>
+        <div class="card-header">
+          <div class="card-name">Hawk Ridge</div>
+          <div class="card-location">Lake St. Louis, MO</div>
+        </div>
+        <div class="progress-section">
+          <div class="progress-label">
+            <span class="progress-label-text">Progress</span>
+            <span class="progress-pct">26.2%</span>
+          </div>
+          <div class="progress-bar-track">
+            <div class="progress-bar-fill" style="width: 26.2%"></div>
+          </div>
+        </div>
+        <div class="card-data">
+          <div class="data-row">
+            <span class="data-row-label">Units</span>
+            <span class="data-row-value">168</span>
+          </div>
+          <hr class="data-divider">
+          <div class="data-row">
+            <span class="data-row-label">Contract</span>
+            <span class="data-row-value">$43.7M</span>
+          </div>
+          <hr class="data-divider">
+          <div class="data-row">
+            <span class="data-row-label">Lender</span>
+            <span class="data-row-value">Trustmark Bank</span>
+          </div>
+          <hr class="data-divider">
+          <div class="data-row">
+            <span class="data-row-label">Est. Completion</span>
+            <span class="data-row-value">Q1 2027</span>
+          </div>
+          <hr class="data-divider">
+          <div class="data-row">
+            <span class="data-row-label">GC</span>
+            <span class="data-row-value">Ridgehouse Construction</span>
+          </div>
+        </div>
+        <div class="milestone">
+          <div class="milestone-label">Key Milestone</div>
+          <div class="milestone-text">Interior finishes — Cabinets & Carpet Phase I</div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- SUMMARY BAR -->
+    <div class="summary">
+      <div class="summary-item">
+        <span class="summary-value">696</span>
+        <span class="summary-label">Units Under Construction</span>
+      </div>
+      <div class="summary-divider"></div>
+      <div class="summary-item">
+        <span class="summary-value">$154.7M</span>
+        <span class="summary-label">Total Construction Value</span>
+      </div>
+      <div class="summary-divider"></div>
+      <div class="summary-item">
+        <span class="summary-value">3</span>
+        <span class="summary-label">Active Projects</span>
+      </div>
+    </div>
+
+    <!-- FOOTER -->
+    <div class="footer">
+      <div class="footer-left">Ridgehouse Companies</div>
+      <div class="footer-right">Data as of March 2026</div>
+    </div>
+
+  </div>
+</body>
+</html>

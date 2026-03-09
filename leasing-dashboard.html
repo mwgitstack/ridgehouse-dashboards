@@ -1,0 +1,713 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=1920, height=1080">
+  <meta http-equiv="refresh" content="3600">
+  <title>Leasing Command Center — Ridgehouse Companies</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="dashboard">
+
+    <!-- HEADER -->
+    <header class="header">
+      <div class="header-left">
+        <svg class="logo" viewBox="0 0 510 435" width="48" height="42">
+          <path d="M310,181.5V110L110,180V325H400V150ZM120,315V187.09l180-63V185L200,220v95Zm90,0V227.09l90-31.5V315Zm180,0H310V192.09l80-28Z" fill="white"/>
+        </svg>
+        <h1 class="header-title">LEASING COMMAND CENTER</h1>
+      </div>
+      <div class="header-date">Sunday, March 8, 2026</div>
+    </header>
+
+    <!-- PORTFOLIO SUMMARY BAR -->
+    <section class="summary-bar">
+      <div class="summary-item summary-occupancy">
+        <div class="summary-label">Portfolio Occupancy</div>
+        <div class="summary-value">
+          <span class="summary-number">70.9%</span>
+          <span class="summary-detail">529 / 746 units</span>
+        </div>
+        <div class="progress-bar progress-bar-sm">
+          <div class="progress-fill progress-yellow" style="width: 70.9%"></div>
+        </div>
+      </div>
+      <div class="summary-divider"></div>
+      <div class="summary-item">
+        <div class="summary-label">Total Leased</div>
+        <div class="summary-value">
+          <span class="summary-number">71.7%</span>
+          <span class="summary-detail">535 / 746</span>
+        </div>
+      </div>
+      <div class="summary-divider"></div>
+      <div class="summary-item">
+        <div class="summary-label">Gap to 90%</div>
+        <div class="summary-value">
+          <span class="summary-number summary-red">138</span>
+          <span class="summary-detail">units needed</span>
+        </div>
+      </div>
+      <div class="summary-divider"></div>
+      <div class="summary-item">
+        <div class="summary-label">Weekly Net Leases</div>
+        <div class="summary-value">
+          <span class="summary-number summary-green">+15</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- PROPERTY CARDS -->
+    <section class="cards-row">
+
+      <!-- THE CODA -->
+      <div class="card">
+        <div class="card-header">
+          <div class="card-title-row">
+            <h2 class="card-name">The Coda</h2>
+            <span class="sentiment-dot sentiment-red" title="Concerned"></span>
+          </div>
+          <div class="card-location">Nashville, TN &middot; 150 units</div>
+        </div>
+
+        <div class="card-occupancy">
+          <div class="card-occ-row">
+            <span class="card-occ-label">Occupancy</span>
+            <span class="card-occ-value card-red">68.0%</span>
+            <span class="card-occ-units">102 / 150</span>
+          </div>
+          <div class="progress-bar">
+            <div class="progress-fill progress-red" style="width: 68.0%"></div>
+          </div>
+        </div>
+
+        <div class="card-metric-row">
+          <span class="card-metric-label">Leased</span>
+          <span class="card-metric-value">72.0%</span>
+          <span class="card-metric-units">108 / 150</span>
+        </div>
+
+        <div class="card-divider"></div>
+
+        <div class="card-section-title">Weekly Activity</div>
+        <div class="card-metrics-grid">
+          <div class="card-metric">
+            <span class="card-metric-label">Net Leases</span>
+            <span class="card-metric-value">+2</span>
+          </div>
+          <div class="card-metric">
+            <span class="card-metric-label">Traffic</span>
+            <span class="card-metric-value">13</span>
+          </div>
+          <div class="card-metric">
+            <span class="card-metric-label">Goal</span>
+            <span class="card-metric-value">5</span>
+          </div>
+          <div class="card-metric card-metric-variance">
+            <span class="card-metric-label">Variance</span>
+            <span class="card-metric-value card-red"><span class="arrow-down"></span> -3</span>
+          </div>
+        </div>
+
+        <div class="card-divider"></div>
+
+        <div class="card-section-title">Stabilization</div>
+        <div class="card-stab-row">
+          <div class="card-stab-item">
+            <span class="card-stab-label">Goal</span>
+            <span class="card-stab-value">Jun 30</span>
+          </div>
+          <div class="card-stab-item">
+            <span class="card-stab-label">Projected</span>
+            <span class="card-stab-value card-green">Apr 21 <span class="arrow-up"></span></span>
+          </div>
+        </div>
+        <div class="card-stab-status card-green">Ahead of schedule</div>
+      </div>
+
+      <!-- THE NORWOOD -->
+      <div class="card">
+        <div class="card-header">
+          <div class="card-title-row">
+            <h2 class="card-name">The Norwood</h2>
+            <span class="sentiment-dot sentiment-green" title="Positive"></span>
+          </div>
+          <div class="card-location">Huntsville, AL &middot; 177 units</div>
+        </div>
+
+        <div class="card-occupancy">
+          <div class="card-occ-row">
+            <span class="card-occ-label">Occupancy</span>
+            <span class="card-occ-value card-yellow">76.3%</span>
+            <span class="card-occ-units">135 / 177</span>
+          </div>
+          <div class="progress-bar">
+            <div class="progress-fill progress-yellow" style="width: 76.3%"></div>
+          </div>
+        </div>
+
+        <div class="card-metric-row">
+          <span class="card-metric-label">Leased</span>
+          <span class="card-metric-value">76.3%</span>
+          <span class="card-metric-units">135 / 177</span>
+        </div>
+
+        <div class="card-divider"></div>
+
+        <div class="card-section-title">Weekly Activity</div>
+        <div class="card-metrics-grid">
+          <div class="card-metric">
+            <span class="card-metric-label">Net Leases</span>
+            <span class="card-metric-value">+4</span>
+          </div>
+          <div class="card-metric">
+            <span class="card-metric-label">Traffic</span>
+            <span class="card-metric-value">17</span>
+          </div>
+          <div class="card-metric">
+            <span class="card-metric-label">Goal</span>
+            <span class="card-metric-value">3</span>
+          </div>
+          <div class="card-metric card-metric-variance">
+            <span class="card-metric-label">Variance</span>
+            <span class="card-metric-value card-green"><span class="arrow-up"></span> +1</span>
+          </div>
+        </div>
+
+        <div class="card-divider"></div>
+
+        <div class="card-section-title">Stabilization</div>
+        <div class="card-stab-row">
+          <div class="card-stab-item">
+            <span class="card-stab-label">Goal</span>
+            <span class="card-stab-value">Mar 31</span>
+          </div>
+          <div class="card-stab-item">
+            <span class="card-stab-label">Projected</span>
+            <span class="card-stab-value card-red">Jun 3 <span class="arrow-down"></span></span>
+          </div>
+        </div>
+        <div class="card-stab-status card-red">Behind schedule</div>
+      </div>
+
+      <!-- THE SOMERSET -->
+      <div class="card">
+        <div class="card-header">
+          <div class="card-title-row">
+            <h2 class="card-name">The Somerset</h2>
+            <span class="sentiment-dot sentiment-yellow" title="Neutral"></span>
+          </div>
+          <div class="card-location">Glendale, AZ &middot; 234 units</div>
+        </div>
+
+        <div class="card-occupancy">
+          <div class="card-occ-row">
+            <span class="card-occ-label">Occupancy</span>
+            <span class="card-occ-value card-red">68.8%</span>
+            <span class="card-occ-units">161 / 234</span>
+          </div>
+          <div class="progress-bar">
+            <div class="progress-fill progress-red" style="width: 68.8%"></div>
+          </div>
+        </div>
+
+        <div class="card-metric-row">
+          <span class="card-metric-label">Leased</span>
+          <span class="card-metric-value">68.8%</span>
+          <span class="card-metric-units">161 / 234</span>
+        </div>
+
+        <div class="card-divider"></div>
+
+        <div class="card-section-title">Weekly Activity</div>
+        <div class="card-metrics-grid">
+          <div class="card-metric">
+            <span class="card-metric-label">Net Leases</span>
+            <span class="card-metric-value">+1</span>
+          </div>
+          <div class="card-metric">
+            <span class="card-metric-label">Traffic</span>
+            <span class="card-metric-value">10</span>
+          </div>
+          <div class="card-metric">
+            <span class="card-metric-label">Goal</span>
+            <span class="card-metric-value">4</span>
+          </div>
+          <div class="card-metric card-metric-variance">
+            <span class="card-metric-label">Variance</span>
+            <span class="card-metric-value card-red"><span class="arrow-down"></span> -3</span>
+          </div>
+        </div>
+
+        <div class="card-divider"></div>
+
+        <div class="card-section-title">Stabilization</div>
+        <div class="card-stab-row">
+          <div class="card-stab-item">
+            <span class="card-stab-label">Goal</span>
+            <span class="card-stab-value">May 31</span>
+          </div>
+          <div class="card-stab-item">
+            <span class="card-stab-label">Projected</span>
+            <span class="card-stab-value card-red">Aug 10 <span class="arrow-down"></span></span>
+          </div>
+        </div>
+        <div class="card-stab-status card-red">Behind schedule</div>
+      </div>
+
+      <!-- THE AVERY -->
+      <div class="card">
+        <div class="card-header">
+          <div class="card-title-row">
+            <h2 class="card-name">The Avery</h2>
+            <span class="sentiment-dot sentiment-green" title="Positive"></span>
+          </div>
+          <div class="card-location">Avondale, AZ &middot; 185 units</div>
+        </div>
+
+        <div class="card-occupancy">
+          <div class="card-occ-row">
+            <span class="card-occ-label">Occupancy</span>
+            <span class="card-occ-value card-yellow">70.8%</span>
+            <span class="card-occ-units">131 / 185</span>
+          </div>
+          <div class="progress-bar">
+            <div class="progress-fill progress-yellow" style="width: 70.8%"></div>
+          </div>
+        </div>
+
+        <div class="card-metric-row">
+          <span class="card-metric-label">Leased</span>
+          <span class="card-metric-value">70.8%</span>
+          <span class="card-metric-units">131 / 185</span>
+        </div>
+
+        <div class="card-divider"></div>
+
+        <div class="card-section-title">Weekly Activity</div>
+        <div class="card-metrics-grid">
+          <div class="card-metric">
+            <span class="card-metric-label">Net Leases</span>
+            <span class="card-metric-value">+8</span>
+          </div>
+          <div class="card-metric">
+            <span class="card-metric-label">Traffic</span>
+            <span class="card-metric-value">17</span>
+          </div>
+          <div class="card-metric">
+            <span class="card-metric-label">Goal</span>
+            <span class="card-metric-value">4</span>
+          </div>
+          <div class="card-metric card-metric-variance">
+            <span class="card-metric-label">Variance</span>
+            <span class="card-metric-value card-green"><span class="arrow-up"></span> +4</span>
+          </div>
+        </div>
+
+        <div class="card-divider"></div>
+
+        <div class="card-section-title">Stabilization</div>
+        <div class="card-stab-row">
+          <div class="card-stab-item">
+            <span class="card-stab-label">Goal</span>
+            <span class="card-stab-value">Apr 30</span>
+          </div>
+          <div class="card-stab-item">
+            <span class="card-stab-label">Projected</span>
+            <span class="card-stab-value card-yellow">May 19 <span class="arrow-down"></span></span>
+          </div>
+        </div>
+        <div class="card-stab-status card-yellow">Close to target</div>
+      </div>
+
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+      <span class="footer-brand">RIDGEHOUSE COMPANIES</span>
+      <span class="footer-date">Data as of March 8, 2026</span>
+    </footer>
+
+  </div>
+
+  <!-- INLINE STYLES (layout & component styles — colors/fonts come from style.css) -->
+  <style>
+    *, *::before, *::after {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html, body {
+      width: 1920px;
+      height: 1080px;
+      overflow: hidden;
+      background: #0d0d0d;
+      color: #E6E6E6;
+      font-family: 'Red Hat Text', sans-serif;
+      font-size: 16px;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .dashboard {
+      width: 1920px;
+      height: 1080px;
+      display: flex;
+      flex-direction: column;
+      padding: 24px 32px 16px;
+      gap: 16px;
+    }
+
+    /* HEADER */
+    .header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-shrink: 0;
+      height: 52px;
+    }
+
+    .header-left {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .logo {
+      flex-shrink: 0;
+    }
+
+    .header-title {
+      font-family: 'Space Mono', monospace;
+      font-size: 28px;
+      font-weight: 700;
+      letter-spacing: 4px;
+      color: #F49466;
+    }
+
+    .header-date {
+      font-size: 18px;
+      color: #888;
+      font-family: 'Red Hat Text', sans-serif;
+    }
+
+    /* SUMMARY BAR */
+    .summary-bar {
+      display: flex;
+      align-items: center;
+      background: #1a1a1a;
+      border-radius: 12px;
+      padding: 16px 28px;
+      gap: 0;
+      flex-shrink: 0;
+      height: 88px;
+      border: 1px solid #2a2a2a;
+    }
+
+    .summary-item {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    .summary-occupancy {
+      flex: 1.6;
+    }
+
+    .summary-divider {
+      width: 1px;
+      height: 48px;
+      background: #333;
+      margin: 0 24px;
+      flex-shrink: 0;
+    }
+
+    .summary-label {
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      color: #888;
+      font-weight: 500;
+    }
+
+    .summary-value {
+      display: flex;
+      align-items: baseline;
+      gap: 10px;
+    }
+
+    .summary-number {
+      font-family: 'Space Mono', monospace;
+      font-size: 28px;
+      font-weight: 700;
+      color: #E6E6E6;
+    }
+
+    .summary-detail {
+      font-size: 14px;
+      color: #888;
+    }
+
+    .summary-red { color: #f87171; }
+    .summary-green { color: #4ade80; }
+
+    /* PROGRESS BARS */
+    .progress-bar {
+      width: 100%;
+      height: 8px;
+      background: #333;
+      border-radius: 4px;
+      overflow: hidden;
+      margin-top: 4px;
+    }
+
+    .progress-bar-sm {
+      height: 6px;
+      margin-top: 6px;
+    }
+
+    .progress-fill {
+      height: 100%;
+      border-radius: 4px;
+      transition: width 0.5s ease;
+    }
+
+    .progress-red { background: #f87171; }
+    .progress-yellow { background: #facc15; }
+    .progress-green { background: #4ade80; }
+
+    /* CARDS ROW */
+    .cards-row {
+      display: flex;
+      gap: 16px;
+      flex: 1;
+      min-height: 0;
+    }
+
+    /* CARD */
+    .card {
+      flex: 1;
+      background: #1a1a1a;
+      border-radius: 12px;
+      padding: 18px 20px 14px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      border: 1px solid #2a2a2a;
+      overflow: hidden;
+    }
+
+    .card-header {
+      flex-shrink: 0;
+    }
+
+    .card-title-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .card-name {
+      font-family: 'Space Mono', monospace;
+      font-size: 20px;
+      font-weight: 700;
+      color: #F49466;
+      letter-spacing: 0.5px;
+    }
+
+    .card-location {
+      font-size: 13px;
+      color: #888;
+      margin-top: 2px;
+    }
+
+    /* SENTIMENT DOT */
+    .sentiment-dot {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      flex-shrink: 0;
+    }
+
+    .sentiment-red { background: #f87171; box-shadow: 0 0 8px rgba(248,113,113,0.4); }
+    .sentiment-yellow { background: #facc15; box-shadow: 0 0 8px rgba(250,204,21,0.4); }
+    .sentiment-green { background: #4ade80; box-shadow: 0 0 8px rgba(74,222,128,0.4); }
+
+    /* CARD OCCUPANCY */
+    .card-occupancy {
+      flex-shrink: 0;
+    }
+
+    .card-occ-row {
+      display: flex;
+      align-items: baseline;
+      gap: 8px;
+      margin-bottom: 4px;
+    }
+
+    .card-occ-label {
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: #888;
+    }
+
+    .card-occ-value {
+      font-family: 'Space Mono', monospace;
+      font-size: 26px;
+      font-weight: 700;
+      margin-left: auto;
+    }
+
+    .card-occ-units {
+      font-size: 13px;
+      color: #888;
+    }
+
+    .card-red { color: #f87171; }
+    .card-yellow { color: #facc15; }
+    .card-green { color: #4ade80; }
+
+    /* CARD METRIC ROW (leased) */
+    .card-metric-row {
+      display: flex;
+      align-items: baseline;
+      gap: 8px;
+      flex-shrink: 0;
+    }
+
+    .card-metric-row .card-metric-label {
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: #888;
+    }
+
+    .card-metric-row .card-metric-value {
+      font-family: 'Space Mono', monospace;
+      font-size: 18px;
+      font-weight: 700;
+      margin-left: auto;
+    }
+
+    .card-metric-row .card-metric-units {
+      font-size: 13px;
+      color: #888;
+    }
+
+    /* CARD DIVIDER */
+    .card-divider {
+      height: 1px;
+      background: #2a2a2a;
+      flex-shrink: 0;
+    }
+
+    /* CARD SECTION TITLE */
+    .card-section-title {
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      color: #666;
+      font-weight: 600;
+      flex-shrink: 0;
+    }
+
+    /* CARD METRICS GRID */
+    .card-metrics-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 6px 12px;
+      flex-shrink: 0;
+    }
+
+    .card-metric {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+    }
+
+    .card-metric .card-metric-label {
+      font-size: 13px;
+      color: #888;
+    }
+
+    .card-metric .card-metric-value {
+      font-family: 'Space Mono', monospace;
+      font-size: 16px;
+      font-weight: 700;
+    }
+
+    /* ARROWS */
+    .arrow-up::before {
+      content: "\25B2";
+      font-size: 10px;
+      margin-right: 2px;
+    }
+
+    .arrow-down::before {
+      content: "\25BC";
+      font-size: 10px;
+      margin-right: 2px;
+    }
+
+    /* STABILIZATION */
+    .card-stab-row {
+      display: flex;
+      gap: 16px;
+      flex-shrink: 0;
+    }
+
+    .card-stab-item {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+
+    .card-stab-label {
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: #666;
+    }
+
+    .card-stab-value {
+      font-family: 'Space Mono', monospace;
+      font-size: 15px;
+      font-weight: 700;
+    }
+
+    .card-stab-status {
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.5px;
+      flex-shrink: 0;
+    }
+
+    /* FOOTER */
+    .footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-shrink: 0;
+      height: 32px;
+      padding: 0 4px;
+    }
+
+    .footer-brand {
+      font-family: 'Space Mono', monospace;
+      font-size: 13px;
+      letter-spacing: 3px;
+      color: #555;
+      font-weight: 700;
+    }
+
+    .footer-date {
+      font-size: 13px;
+      color: #555;
+    }
+  </style>
+</body>
+</html>

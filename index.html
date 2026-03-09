@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ridgehouse Dashboard Hub</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    /* Override TV-fixed sizing for this navigation page */
+    html, body {
+      width: 100%;
+      height: 100%;
+      overflow: auto;
+      font-size: 16px;
+    }
+
+    .hub {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 48px 24px;
+    }
+
+    .hub-header {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      margin-bottom: 12px;
+    }
+
+    .hub-logo {
+      width: 48px;
+      height: 42px;
+    }
+
+    .hub-title {
+      font-family: var(--font-headline);
+      font-size: 28px;
+      color: var(--text-primary);
+    }
+
+    .hub-subtitle {
+      font-size: 14px;
+      color: var(--text-secondary);
+      margin-bottom: 40px;
+    }
+
+    .hub-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+
+    .hub-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 24px;
+      text-decoration: none;
+      color: var(--text-primary);
+      transition: border-color 0.2s, background 0.2s;
+    }
+
+    .hub-card:hover {
+      border-color: var(--copper-light);
+      background: var(--bg-card-hover);
+    }
+
+    .hub-card-title {
+      font-family: var(--font-body);
+      font-weight: 700;
+      font-size: 18px;
+      margin-bottom: 6px;
+    }
+
+    .hub-card-desc {
+      font-size: 14px;
+      color: var(--text-secondary);
+      line-height: 1.5;
+    }
+
+    .hub-card-screen {
+      display: inline-block;
+      margin-top: 10px;
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      padding: 3px 8px;
+      border-radius: 4px;
+      background: rgba(244, 148, 102, 0.15);
+      color: var(--copper-light);
+    }
+
+    .hub-section {
+      margin-top: 48px;
+    }
+
+    .hub-section-title {
+      font-family: var(--font-body);
+      font-weight: 700;
+      font-size: 14px;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      color: var(--text-muted);
+      margin-bottom: 16px;
+    }
+
+    .hub-instructions {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 24px;
+      font-size: 14px;
+      line-height: 1.7;
+      color: var(--text-secondary);
+    }
+
+    .hub-instructions ol {
+      padding-left: 20px;
+    }
+
+    .hub-instructions li {
+      margin-bottom: 8px;
+    }
+
+    .hub-instructions code {
+      background: rgba(255,255,255,0.06);
+      padding: 2px 6px;
+      border-radius: 4px;
+      font-family: var(--font-headline);
+      font-size: 13px;
+    }
+  </style>
+</head>
+<body>
+  <div class="hub">
+
+    <div class="hub-header">
+      <svg class="hub-logo" viewBox="0 0 510 435">
+        <path d="M310,181.5V110L110,180V325H400V150ZM120,315V187.09l180-63V185L200,220v95Zm90,0V227.09l90-31.5V315Zm180,0H310V192.09l80-28Z" fill="#F49466"/>
+      </svg>
+      <div class="hub-title">Dashboard Hub</div>
+    </div>
+    <div class="hub-subtitle">Airtame digital signage pages for Ridgehouse Companies. Click any page to preview at 1920x1080.</div>
+
+    <div class="hub-grid">
+
+      <a href="scorecard-dashboard.html" class="hub-card">
+        <div class="hub-card-title">Company Scorecard</div>
+        <div class="hub-card-desc">Portfolio-wide KPIs: units, occupancy, construction, leasing velocity</div>
+        <span class="hub-card-screen">Bullpen + Conference</span>
+      </a>
+
+      <a href="leasing-dashboard.html" class="hub-card">
+        <div class="hub-card-title">Leasing Command Center</div>
+        <div class="hub-card-desc">4-property breakdown: occupancy, velocity, stabilization timelines</div>
+        <span class="hub-card-screen">Bullpen</span>
+      </a>
+
+      <a href="construction-dashboard.html" class="hub-card">
+        <div class="hub-card-title">Active Construction</div>
+        <div class="hub-card-desc">3 active projects: Aster, Renza, Hawk Ridge — progress and milestones</div>
+        <span class="hub-card-screen">Bullpen</span>
+      </a>
+
+      <a href="financial-dashboard.html" class="hub-card">
+        <div class="hub-card-title">Financial Overview</div>
+        <div class="hub-card-desc">Debt portfolio, maturities, LTC, property status breakdown</div>
+        <span class="hub-card-screen">Bullpen</span>
+      </a>
+
+      <a href="announcements.html" class="hub-card">
+        <div class="hub-card-title">Team Wins & Announcements</div>
+        <div class="hub-card-desc">Company milestones, upcoming events, team recognition</div>
+        <span class="hub-card-screen">Bullpen</span>
+      </a>
+
+      <a href="brand-slide.html" class="hub-card">
+        <div class="hub-card-title">Brand Slide</div>
+        <div class="hub-card-desc">Clean brand screensaver with logo and tagline</div>
+        <span class="hub-card-screen">Bullpen + Conference</span>
+      </a>
+
+    </div>
+
+    <div class="hub-section">
+      <div class="hub-section-title">Airtame Setup Instructions</div>
+      <div class="hub-instructions">
+        <ol>
+          <li>Log into <strong>Airtame Cloud</strong> at airtame.com</li>
+          <li>Select the <strong>Bullpen</strong> device → Digital Signage → Add Website App</li>
+          <li>Paste the URL for each dashboard page (e.g., <code>https://your-username.github.io/ridgehouse-dashboards/scorecard-dashboard.html</code>)</li>
+          <li>Set display time per slide (15-20 seconds recommended)</li>
+          <li>Repeat for the <strong>Conference Room</strong> device with its playlist</li>
+          <li>Set display schedule: <strong>7:00 AM – 7:00 PM, weekdays</strong></li>
+        </ol>
+      </div>
+    </div>
+
+  </div>
+</body>
+</html>

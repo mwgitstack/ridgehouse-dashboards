@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=1920, height=1080">
+  <meta http-equiv="refresh" content="3600">
+  <title>Leasing Overview — Ridgehouse Companies</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="data/leasing-data.js"></script>
+</head>
+<body>
+  <div class="dashboard" id="dashboard">
+
+    <!-- HEADER -->
+    <header class="header">
+      <div class="header-left">
+        <svg class="header-logo" viewBox="0 0 510 435">
+          <path d="M310,181.5V110L110,180V325H400V150ZM120,315V187.09l180-63V185L200,220v95Zm90,0V227.09l90-31.5V315Zm180,0H310V192.09l80-28Z" fill="white"/>
+        </svg>
+        <div>
+          <div class="header-title">RIDGEHOUSE COMPANIES</div>
+          <div class="header-subtitle">Leasing Overview</div>
+        </div>
+      </div>
+      <div class="header-date">
+        <div class="date-label">Week Ending</div>
+        <div id="report-date">—</div>
+      </div>
+    </header>
+
+    <!-- PORTFOLIO SUMMARY -->
+    <section class="lo-summary">
+      <div class="lo-summary-item lo-summary-main">
+        <div class="lo-summary-label">Portfolio Occupancy</div>
+        <div class="lo-summary-value">
+          <span class="lo-summary-pct" id="port-occ-pct">—</span>
+          <span class="lo-summary-detail" id="port-occ-detail"></span>
+        </div>
+        <div class="lo-progress-bar">
+          <div class="lo-progress-fill" id="port-occ-bar"></div>
+          <div class="lo-progress-goal"></div>
+        </div>
+      </div>
+      <div class="lo-summary-divider"></div>
+      <div class="lo-summary-item">
+        <div class="lo-summary-label">Total Leased</div>
+        <div class="lo-summary-value">
+          <span class="lo-summary-pct" id="port-leased-pct">—</span>
+          <span class="lo-summary-detail" id="port-leased-detail"></span>
+        </div>
+      </div>
+      <div class="lo-summary-divider"></div>
+      <div class="lo-summary-item">
+        <div class="lo-summary-label">Gap to 90%</div>
+        <div class="lo-summary-value">
+          <span class="lo-summary-pct lo-text-red" id="port-gap">—</span>
+          <span class="lo-summary-detail">units needed</span>
+        </div>
+      </div>
+      <div class="lo-summary-divider"></div>
+      <div class="lo-summary-item">
+        <div class="lo-summary-label">Weekly Net Leases</div>
+        <div class="lo-summary-value">
+          <span class="lo-summary-pct lo-text-green" id="port-net-leases">—</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- 4 PROPERTY CARDS -->
+    <section class="lo-cards" id="property-cards">
+      <!-- Populated by JS -->
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+      <span class="footer-brand">RIDGEHOUSE COMPANIES</span>
+      <span id="footer-date">—</span>
+    </footer>
+
+  </div>
+
+  <style>
+    .dashboard {
+      padding: 36px 48px 24px;
+      gap: 20px;
+    }
+
+    /* SUMMARY BAR */
+    .lo-summary {
+      display: flex;
+      align-items: center;
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 20px 36px;
+      flex-shrink: 0;
+    }
+
+    .lo-summary-item {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .lo-summary-main { flex: 1.8; }
+
+    .lo-summary-divider {
+      width: 1px;
+      height: 56px;
+      background: var(--border);
+      margin: 0 32px;
+      flex-shrink: 0;
+    }
+
+    .lo-summary-label {
+      font-size: 13px;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      color: var(--text-muted);
+      font-weight: 600;
+    }
+
+    .lo-summary-value {
+      display: flex;
+      align-items: baseline;
+      gap: 12px;
+    }
+
+    .lo-summary-pct {
+      font-family: var(--font-headline);
+      font-size: 36px;
+      font-weight: 700;
+      color: var(--text-primary);
+    }
+
+    .lo-summary-detail {
+      font-size: 16px;
+      color: var(--text-secondary);
+    }
+
+    .lo-text-red { color: var(--red) !important; }
+    .lo-text-yellow { color: var(--yellow) !important; }
+    .lo-text-green { color: var(--green) !important; }
+
+    /* Progress bar with 90% goal marker */
+    .lo-progress-bar {
+      width: 100%;
+      height: 8px;
+      background: #2a2a2a;
+      border-radius: 4px;
+      overflow: visible;
+      position: relative;
+      margin-top: 4px;
+    }
+
+    .lo-progress-fill {
+      height: 100%;
+      border-radius: 4px;
+      transition: width 0.5s ease;
+    }
+
+    .lo-progress-goal {
+      position: absolute;
+      left: 90%;
+      top: -4px;
+      width: 2px;
+      height: 16px;
+      background: var(--text-muted);
+      border-radius: 1px;
+    }
+
+    /* PROPERTY CARDS */
+    .lo-cards {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 20px;
+      flex: 1;
+      min-height: 0;
+    }
+
+    .lo-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 28px 28px 24px;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .lo-card-status-bar {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 4px;
+    }
+
+    .lo-card-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+    }
+
+    .lo-card-name {
+      font-family: var(--font-headline);
+      font-size: 22px;
+      font-weight: 700;
+      color: var(--copper-light);
+      letter-spacing: 0.5px;
+    }
+
+    .lo-card-location {
+      font-size: 14px;
+      color: var(--text-secondary);
+      margin-top: 2px;
+    }
+
+    .lo-sentiment {
+      width: 14px;
+      height: 14px;
+      border-radius: 50%;
+      flex-shrink: 0;
+      margin-top: 4px;
+    }
+
+    .lo-sentiment-red { background: var(--red); box-shadow: 0 0 10px rgba(248,113,113,0.4); }
+    .lo-sentiment-yellow { background: var(--yellow); box-shadow: 0 0 10px rgba(250,204,21,0.4); }
+    .lo-sentiment-green { background: var(--green); box-shadow: 0 0 10px rgba(74,222,128,0.4); }
+
+    /* Occupancy section */
+    .lo-card-occ {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .lo-card-occ-row {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+    }
+
+    .lo-card-occ-label {
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      color: var(--text-muted);
+      font-weight: 600;
+    }
+
+    .lo-card-occ-value {
+      font-family: var(--font-headline);
+      font-size: 42px;
+      font-weight: 700;
+      line-height: 1;
+    }
+
+    .lo-card-occ-units {
+      font-size: 15px;
+      color: var(--text-secondary);
+    }
+
+    .lo-card-progress {
+      width: 100%;
+      height: 10px;
+      background: #2a2a2a;
+      border-radius: 5px;
+      overflow: visible;
+      position: relative;
+    }
+
+    .lo-card-progress-fill {
+      height: 100%;
+      border-radius: 5px;
+      transition: width 0.5s ease;
+    }
+
+    .lo-card-progress-goal {
+      position: absolute;
+      left: 90%;
+      top: -3px;
+      width: 2px;
+      height: 16px;
+      background: var(--text-muted);
+      border-radius: 1px;
+    }
+
+    /* Metrics grid */
+    .lo-card-metrics {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+      flex: 1;
+    }
+
+    .lo-card-metric {
+      background: rgba(255,255,255,0.03);
+      border-radius: 10px;
+      padding: 12px 14px;
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    .lo-card-metric-label {
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      color: var(--text-muted);
+      font-weight: 600;
+    }
+
+    .lo-card-metric-value {
+      font-family: var(--font-headline);
+      font-size: 24px;
+      font-weight: 700;
+      color: var(--text-primary);
+    }
+
+    /* Gap highlight */
+    .lo-card-gap {
+      background: rgba(248,113,113,0.08);
+      border: 1px solid rgba(248,113,113,0.15);
+      border-radius: 12px;
+      padding: 14px 16px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: auto;
+    }
+
+    .lo-card-gap-label {
+      font-size: 13px;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      color: var(--text-secondary);
+      font-weight: 600;
+    }
+
+    .lo-card-gap-value {
+      font-family: var(--font-headline);
+      font-size: 32px;
+      font-weight: 700;
+      color: var(--red);
+    }
+  </style>
+
+  <script>
+    (function() {
+      const d = window.LEASING_DATA;
+      if (!d) return;
+
+      const pm = d.portfolio_metrics;
+      const props = d.property_metrics;
+
+      // Format date
+      const date = new Date(d.report_date + 'T12:00:00');
+      const dateStr = date.toLocaleDateString('en-US', { weekday: 'long', month: 'long', day: 'numeric', year: 'numeric' });
+      document.getElementById('report-date').textContent = dateStr;
+      document.getElementById('footer-date').textContent = 'Data as of ' + date.toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' });
+
+      // Portfolio summary
+      const occPct = (pm.portfolio_occ_pct * 100).toFixed(1);
+      document.getElementById('port-occ-pct').textContent = occPct + '%';
+      document.getElementById('port-occ-detail').textContent = pm.total_occupied + ' / ' + pm.total_units + ' units';
+      const occBar = document.getElementById('port-occ-bar');
+      occBar.style.width = occPct + '%';
+      occBar.className = 'lo-progress-fill ' + getProgressClass(pm.portfolio_occ_pct);
+
+      document.getElementById('port-leased-pct').textContent = (pm.portfolio_leased_pct * 100).toFixed(1) + '%';
+      document.getElementById('port-leased-detail').textContent = pm.total_leased + ' / ' + pm.total_units;
+      document.getElementById('port-gap').textContent = pm.total_gap_to_goal;
+
+      // Net leases
+      let totalNet = 0;
+      Object.values(props).forEach(p => { if (p.net_leases) totalNet += p.net_leases; });
+      const netEl = document.getElementById('port-net-leases');
+      netEl.textContent = (totalNet >= 0 ? '+' : '') + totalNet;
+      netEl.className = 'lo-summary-pct ' + (totalNet >= 0 ? 'lo-text-green' : 'lo-text-red');
+
+      // Property cards
+      const order = ['coda', 'norwood', 'somerset', 'avery'];
+      const container = document.getElementById('property-cards');
+
+      order.forEach(key => {
+        const p = props[key];
+        if (!p) return;
+
+        const occPct = (p.occupancy_pct * 100).toFixed(1);
+        const leasedPct = (p.leased_pct * 100).toFixed(1);
+        const colorClass = getColorClass(p.occupancy_pct);
+        const sentimentClass = getSentimentClass(p.manager_sentiment);
+        const progressClass = getProgressClass(p.occupancy_pct);
+
+        const card = document.createElement('div');
+        card.className = 'lo-card';
+        card.innerHTML = `
+          <div class="lo-card-status-bar" style="background: var(--${colorClass})"></div>
+          <div class="lo-card-header">
+            <div>
+              <div class="lo-card-name">${p.display_name}</div>
+              <div class="lo-card-location">${p.city} · ${p.total_units} units</div>
+            </div>
+            <div class="lo-sentiment lo-sentiment-${sentimentClass}"></div>
+          </div>
+
+          <div class="lo-card-occ">
+            <div class="lo-card-occ-row">
+              <span class="lo-card-occ-label">Occupancy</span>
+              <span class="lo-card-occ-units">${p.occupied_units} / ${p.total_units}</span>
+            </div>
+            <div class="lo-card-occ-value" style="color: var(--${colorClass})">${occPct}%</div>
+            <div class="lo-card-progress">
+              <div class="lo-card-progress-fill ${progressClass}" style="width: ${occPct}%"></div>
+              <div class="lo-card-progress-goal"></div>
+            </div>
+          </div>
+
+          <div class="lo-card-metrics">
+            <div class="lo-card-metric">
+              <div class="lo-card-metric-label">Leased</div>
+              <div class="lo-card-metric-value">${leasedPct}%</div>
+            </div>
+            <div class="lo-card-metric">
+              <div class="lo-card-metric-label">Traffic</div>
+              <div class="lo-card-metric-value">${p.weekly_traffic ?? '—'}</div>
+            </div>
+          </div>
+
+          <div class="lo-card-gap">
+            <span class="lo-card-gap-label">Gap to 90%</span>
+            <span class="lo-card-gap-value">${p.gap_to_90_occ_units}</span>
+          </div>
+        `;
+        container.appendChild(card);
+      });
+
+      function getColorClass(pct) {
+        if (pct >= 0.85) return 'green';
+        if (pct >= 0.75) return 'yellow';
+        return 'red';
+      }
+
+      function getProgressClass(pct) {
+        if (pct >= 0.85) return 'progress-green';
+        if (pct >= 0.75) return 'progress-yellow';
+        return 'progress-red';
+      }
+
+      function getSentimentClass(sentiment) {
+        if (sentiment === 'concerned' || sentiment === 'negative') return 'red';
+        if (sentiment === 'neutral') return 'yellow';
+        if (sentiment === 'positive' || sentiment === 'optimistic') return 'green';
+        return 'yellow';
+      }
+    })();
+  </script>
+</body>
+</html>

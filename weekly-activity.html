@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=1920, height=1080">
+  <meta http-equiv="refresh" content="3600">
+  <title>Weekly Activity — Ridgehouse Companies</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="data/leasing-data.js"></script>
+</head>
+<body>
+  <div class="dashboard" id="dashboard">
+
+    <!-- HEADER -->
+    <header class="header">
+      <div class="header-left">
+        <svg class="header-logo" viewBox="0 0 510 435">
+          <path d="M310,181.5V110L110,180V325H400V150ZM120,315V187.09l180-63V185L200,220v95Zm90,0V227.09l90-31.5V315Zm180,0H310V192.09l80-28Z" fill="white"/>
+        </svg>
+        <div>
+          <div class="header-title">RIDGEHOUSE COMPANIES</div>
+          <div class="header-subtitle">Weekly Leasing Activity</div>
+        </div>
+      </div>
+      <div class="header-date">
+        <div class="date-label">Week Ending</div>
+        <div id="report-date">—</div>
+      </div>
+    </header>
+
+    <!-- WEEKLY TOTALS -->
+    <section class="wa-totals">
+      <div class="wa-total-item">
+        <div class="wa-total-label">Net Leases</div>
+        <div class="wa-total-value wa-text-green" id="total-net">—</div>
+      </div>
+      <div class="wa-total-divider"></div>
+      <div class="wa-total-item">
+        <div class="wa-total-label">Total Traffic</div>
+        <div class="wa-total-value" id="total-traffic">—</div>
+      </div>
+      <div class="wa-total-divider"></div>
+      <div class="wa-total-item">
+        <div class="wa-total-label">Combined Goal</div>
+        <div class="wa-total-value" id="total-goal">—</div>
+      </div>
+      <div class="wa-total-divider"></div>
+      <div class="wa-total-item">
+        <div class="wa-total-label">Net Variance</div>
+        <div class="wa-total-value" id="total-variance">—</div>
+      </div>
+    </section>
+
+    <!-- PROPERTY CARDS -->
+    <section class="wa-cards" id="activity-cards">
+      <!-- Populated by JS -->
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+      <span class="footer-brand">RIDGEHOUSE COMPANIES</span>
+      <span id="footer-date">—</span>
+    </footer>
+
+  </div>
+
+  <style>
+    .dashboard {
+      padding: 36px 48px 24px;
+      gap: 20px;
+    }
+
+    /* TOTALS BAR */
+    .wa-totals {
+      display: flex;
+      align-items: center;
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 20px 36px;
+      flex-shrink: 0;
+    }
+
+    .wa-total-item {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .wa-total-divider {
+      width: 1px;
+      height: 56px;
+      background: var(--border);
+      flex-shrink: 0;
+    }
+
+    .wa-total-label {
+      font-size: 13px;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      color: var(--text-muted);
+      font-weight: 600;
+    }
+
+    .wa-total-value {
+      font-family: var(--font-headline);
+      font-size: 44px;
+      font-weight: 700;
+      color: var(--text-primary);
+    }
+
+    .wa-text-green { color: var(--green) !important; }
+    .wa-text-red { color: var(--red) !important; }
+    .wa-text-yellow { color: var(--yellow) !important; }
+
+    /* PROPERTY CARDS */
+    .wa-cards {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 20px;
+      flex: 1;
+      min-height: 0;
+    }
+
+    .wa-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 28px 24px 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .wa-card-status-bar {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 4px;
+    }
+
+    .wa-card-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+    }
+
+    .wa-card-name {
+      font-family: var(--font-headline);
+      font-size: 22px;
+      font-weight: 700;
+      color: var(--copper-light);
+    }
+
+    .wa-card-location {
+      font-size: 13px;
+      color: var(--text-secondary);
+      margin-top: 2px;
+    }
+
+    /* BIG NET LEASES */
+    .wa-card-hero {
+      text-align: center;
+      padding: 12px 0;
+    }
+
+    .wa-card-hero-label {
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      color: var(--text-muted);
+      font-weight: 600;
+      margin-bottom: 6px;
+    }
+
+    .wa-card-hero-value {
+      font-family: var(--font-headline);
+      font-size: 72px;
+      font-weight: 700;
+      line-height: 1;
+    }
+
+    .wa-card-hero-sub {
+      font-size: 14px;
+      color: var(--text-secondary);
+      margin-top: 6px;
+    }
+
+    /* METRICS GRID */
+    .wa-card-metrics {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+      flex: 1;
+    }
+
+    .wa-card-metric {
+      background: rgba(255,255,255,0.03);
+      border-radius: 10px;
+      padding: 14px 16px;
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    .wa-card-metric-label {
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      color: var(--text-muted);
+      font-weight: 600;
+    }
+
+    .wa-card-metric-value {
+      font-family: var(--font-headline);
+      font-size: 26px;
+      font-weight: 700;
+      color: var(--text-primary);
+    }
+
+    /* VARIANCE BANNER */
+    .wa-card-variance {
+      border-radius: 12px;
+      padding: 14px 16px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: auto;
+    }
+
+    .wa-variance-positive {
+      background: rgba(74,222,128,0.08);
+      border: 1px solid rgba(74,222,128,0.15);
+    }
+
+    .wa-variance-negative {
+      background: rgba(248,113,113,0.08);
+      border: 1px solid rgba(248,113,113,0.15);
+    }
+
+    .wa-variance-neutral {
+      background: rgba(255,255,255,0.03);
+      border: 1px solid var(--border);
+    }
+
+    .wa-variance-label {
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      color: var(--text-secondary);
+      font-weight: 600;
+    }
+
+    .wa-variance-value {
+      font-family: var(--font-headline);
+      font-size: 28px;
+      font-weight: 700;
+    }
+
+    /* NARRATIVE */
+    .wa-card-narrative {
+      font-size: 13px;
+      color: var(--text-secondary);
+      line-height: 1.5;
+      padding: 8px 12px;
+      background: rgba(255,255,255,0.02);
+      border-radius: 8px;
+      border-left: 3px solid var(--border);
+      max-height: 60px;
+      overflow: hidden;
+    }
+  </style>
+
+  <script>
+    (function() {
+      const d = window.LEASING_DATA;
+      if (!d) return;
+
+      const props = d.property_metrics;
+      const today = new Date(d.report_date + 'T12:00:00');
+
+      // Format date
+      const dateStr = today.toLocaleDateString('en-US', { weekday: 'long', month: 'long', day: 'numeric', year: 'numeric' });
+      document.getElementById('report-date').textContent = dateStr;
+      document.getElementById('footer-date').textContent = 'Data as of ' + today.toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' });
+
+      // Calculate totals
+      let totalNet = 0, totalTraffic = 0, totalGoal = 0, totalVariance = 0;
+      const order = ['coda', 'norwood', 'somerset', 'avery'];
+
+      order.forEach(key => {
+        const p = props[key];
+        if (!p) return;
+        totalNet += p.net_leases || 0;
+        totalTraffic += p.weekly_traffic || 0;
+        totalGoal += p.weekly_goal || 0;
+        totalVariance += p.variance || 0;
+      });
+
+      const netEl = document.getElementById('total-net');
+      netEl.textContent = (totalNet >= 0 ? '+' : '') + totalNet;
+      netEl.className = 'wa-total-value ' + (totalNet >= 0 ? 'wa-text-green' : 'wa-text-red');
+
+      document.getElementById('total-traffic').textContent = totalTraffic;
+      document.getElementById('total-goal').textContent = totalGoal;
+
+      const varEl = document.getElementById('total-variance');
+      varEl.textContent = (totalVariance >= 0 ? '+' : '') + totalVariance;
+      varEl.className = 'wa-total-value ' + (totalVariance >= 0 ? 'wa-text-green' : 'wa-text-red');
+
+      // Property cards
+      const container = document.getElementById('activity-cards');
+
+      order.forEach(key => {
+        const p = props[key];
+        if (!p) return;
+
+        const netLeases = p.net_leases;
+        const hasNet = netLeases !== null && netLeases !== undefined;
+        const netDisplay = hasNet ? (netLeases >= 0 ? '+' + netLeases : '' + netLeases) : '—';
+        const netColor = !hasNet ? 'var(--text-muted)' : (netLeases >= 0 ? 'var(--green)' : 'var(--red)');
+
+        const variance = p.variance;
+        const hasVariance = variance !== null && variance !== undefined;
+        const varianceDisplay = hasVariance ? (variance >= 0 ? '+' + variance : '' + variance) : '—';
+        const varianceColor = !hasVariance ? 'var(--text-muted)' : (variance >= 0 ? 'var(--green)' : 'var(--red)');
+        const varianceClass = !hasVariance ? 'wa-variance-neutral' : (variance >= 0 ? 'wa-variance-positive' : 'wa-variance-negative');
+
+        const goalMet = hasNet && p.weekly_goal && netLeases >= p.weekly_goal;
+        const statusColor = goalMet ? 'green' : (hasNet && netLeases > 0 ? 'yellow' : 'red');
+
+        // Get first narrative point if available
+        const narrative = p.key_narrative_points && p.key_narrative_points.length > 0
+          ? p.key_narrative_points[0]
+          : null;
+
+        const card = document.createElement('div');
+        card.className = 'wa-card';
+        card.innerHTML = `
+          <div class="wa-card-status-bar" style="background: var(--${statusColor})"></div>
+          <div class="wa-card-header">
+            <div>
+              <div class="wa-card-name">${p.display_name}</div>
+              <div class="wa-card-location">${p.city} · ${p.total_units} units</div>
+            </div>
+          </div>
+
+          <div class="wa-card-hero">
+            <div class="wa-card-hero-label">Net Leases This Week</div>
+            <div class="wa-card-hero-value" style="color: ${netColor}">${netDisplay}</div>
+            <div class="wa-card-hero-sub">Goal: ${p.weekly_goal || '—'} / week</div>
+          </div>
+
+          <div class="wa-card-metrics">
+            <div class="wa-card-metric">
+              <div class="wa-card-metric-label">Traffic</div>
+              <div class="wa-card-metric-value">${p.weekly_traffic ?? '—'}</div>
+            </div>
+            <div class="wa-card-metric">
+              <div class="wa-card-metric-label">Goal</div>
+              <div class="wa-card-metric-value">${p.weekly_goal || '—'}</div>
+            </div>
+          </div>
+
+          ${narrative ? `<div class="wa-card-narrative">"${narrative}"</div>` : ''}
+
+          <div class="wa-card-variance ${varianceClass}">
+            <span class="wa-variance-label">Variance to Goal</span>
+            <span class="wa-variance-value" style="color: ${varianceColor}">${varianceDisplay}</span>
+          </div>
+        `;
+        container.appendChild(card);
+      });
+    })();
+  </script>
+</body>
+</html>

@@ -195,8 +195,10 @@
     .wa-card-metrics {
       display: grid;
       grid-template-columns: 1fr 1fr;
+      grid-template-rows: 1fr 1fr;
       gap: 10px;
       flex: 1;
+      min-height: 0;
     }
 
     .wa-card-metric {
@@ -205,6 +207,7 @@
       padding: 14px 16px;
       display: flex;
       flex-direction: column;
+      justify-content: center;
       gap: 4px;
     }
 
@@ -364,6 +367,14 @@
             <div class="wa-card-metric">
               <div class="wa-card-metric-label">Goal</div>
               <div class="wa-card-metric-value">${p.weekly_goal || '—'}</div>
+            </div>
+            <div class="wa-card-metric">
+              <div class="wa-card-metric-label">Occupancy</div>
+              <div class="wa-card-metric-value">${(p.occupancy_pct * 100).toFixed(1)}%</div>
+            </div>
+            <div class="wa-card-metric">
+              <div class="wa-card-metric-label">Leased</div>
+              <div class="wa-card-metric-value">${(p.leased_pct * 100).toFixed(1)}%</div>
             </div>
           </div>
 

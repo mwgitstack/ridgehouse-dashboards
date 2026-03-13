@@ -4,8 +4,9 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=1920, height=1080">
   <meta http-equiv="refresh" content="3600">
-  <title>Active Construction Projects — Ridgehouse Construction</title>
+  <title>Active Construction Projects — Mission Constructors</title>
   <link rel="stylesheet" href="style.css">
+  <script src="data/construction-data.js"></script>
   <style>
     *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 
@@ -214,6 +215,19 @@
       margin: 2px 0;
     }
 
+    /* Draw status badge inline */
+    .draw-status {
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.5px;
+      padding: 2px 8px;
+      border-radius: 4px;
+    }
+    .draw-status--draft { background: rgba(250,204,21,0.15); color: #facc15; }
+    .draw-status--submitted { background: rgba(96,165,250,0.15); color: #60a5fa; }
+    .draw-status--funded { background: rgba(74,222,128,0.15); color: #4ade80; }
+    .draw-status--overdue { background: rgba(248,113,113,0.15); color: #f87171; }
+
     /* Milestone */
     .milestone {
       margin-top: auto;
@@ -309,180 +323,28 @@
       </div>
       <div class="header-text">
         <div class="header-title">Active Construction</div>
-        <div class="header-subtitle">Ridgehouse Construction</div>
+        <div class="header-subtitle">Mission Constructors</div>
       </div>
-      <div class="header-date">
-        <script>
-          const now = new Date();
-          const months = ['January','February','March','April','May','June','July','August','September','October','November','December'];
-          document.write(months[now.getMonth()] + ' ' + now.getDate() + ', ' + now.getFullYear());
-        </script>
-      </div>
+      <div class="header-date" id="header-date"></div>
     </div>
 
     <!-- PROJECT CARDS -->
-    <div class="cards">
-
-      <!-- ASTER -->
-      <div class="card">
-        <span class="badge badge--yellow">Under Construction</span>
-        <div class="card-header">
-          <div class="card-name">Aster</div>
-          <div class="card-location">Knoxville, TN</div>
-        </div>
-        <div class="progress-section">
-          <div class="progress-label">
-            <span class="progress-label-text">Progress</span>
-            <span class="progress-pct">51.5%</span>
-          </div>
-          <div class="progress-bar-track">
-            <div class="progress-bar-fill" style="width: 51.5%"></div>
-          </div>
-        </div>
-        <div class="card-data">
-          <div class="data-row">
-            <span class="data-row-label">Units</span>
-            <span class="data-row-value">194</span>
-          </div>
-          <hr class="data-divider">
-          <div class="data-row">
-            <span class="data-row-label">Contract</span>
-            <span class="data-row-value">$50.0M</span>
-          </div>
-          <hr class="data-divider">
-          <div class="data-row">
-            <span class="data-row-label">Lender</span>
-            <span class="data-row-value">UMB</span>
-          </div>
-          <hr class="data-divider">
-          <div class="data-row">
-            <span class="data-row-label">Est. Completion</span>
-            <span class="data-row-value">Q4 2026</span>
-          </div>
-          <hr class="data-divider">
-          <div class="data-row">
-            <span class="data-row-label">GC</span>
-            <span class="data-row-value">Ridgehouse Construction</span>
-          </div>
-        </div>
-        <div class="milestone">
-          <div class="milestone-label">Key Milestone</div>
-          <div class="milestone-text">Vertical construction in progress</div>
-        </div>
-      </div>
-
-      <!-- RENZA -->
-      <div class="card">
-        <span class="badge badge--yellow">Under Construction</span>
-        <div class="card-header">
-          <div class="card-name">Renza</div>
-          <div class="card-location">Statesville, NC</div>
-        </div>
-        <div class="progress-section">
-          <div class="progress-label">
-            <span class="progress-label-text">Progress</span>
-            <span class="progress-pct">58.5%</span>
-          </div>
-          <div class="progress-bar-track">
-            <div class="progress-bar-fill" style="width: 58.5%"></div>
-          </div>
-        </div>
-        <div class="card-data">
-          <div class="data-row">
-            <span class="data-row-label">Units</span>
-            <span class="data-row-value">334</span>
-          </div>
-          <hr class="data-divider">
-          <div class="data-row">
-            <span class="data-row-label">Contract</span>
-            <span class="data-row-value">$61.0M</span>
-          </div>
-          <hr class="data-divider">
-          <div class="data-row">
-            <span class="data-row-label">Lender</span>
-            <span class="data-row-value">Old National Bank</span>
-          </div>
-          <hr class="data-divider">
-          <div class="data-row">
-            <span class="data-row-label">Est. Completion</span>
-            <span class="data-row-value">Q2 2027</span>
-          </div>
-          <hr class="data-divider">
-          <div class="data-row">
-            <span class="data-row-label">GC</span>
-            <span class="data-row-value">Ridgehouse Construction</span>
-          </div>
-        </div>
-        <div class="milestone">
-          <div class="milestone-label">Key Milestone</div>
-          <div class="milestone-text">Site work and foundations</div>
-        </div>
-      </div>
-
-      <!-- HAWK RIDGE (Phase 1 — "Montage") -->
-      <div class="card">
-        <span class="badge badge--yellow">Under Construction</span>
-        <div class="card-header">
-          <div class="card-name">Hawk Ridge</div>
-          <div class="card-location">Lake St. Louis, MO</div>
-        </div>
-        <div class="progress-section">
-          <div class="progress-label">
-            <span class="progress-label-text">Progress</span>
-            <span class="progress-pct">26.2%</span>
-          </div>
-          <div class="progress-bar-track">
-            <div class="progress-bar-fill" style="width: 26.2%"></div>
-          </div>
-        </div>
-        <div class="card-data">
-          <div class="data-row">
-            <span class="data-row-label">Units</span>
-            <span class="data-row-value">168</span>
-          </div>
-          <hr class="data-divider">
-          <div class="data-row">
-            <span class="data-row-label">Contract</span>
-            <span class="data-row-value">$43.7M</span>
-          </div>
-          <hr class="data-divider">
-          <div class="data-row">
-            <span class="data-row-label">Lender</span>
-            <span class="data-row-value">Trustmark Bank</span>
-          </div>
-          <hr class="data-divider">
-          <div class="data-row">
-            <span class="data-row-label">Est. Completion</span>
-            <span class="data-row-value">Q1 2027</span>
-          </div>
-          <hr class="data-divider">
-          <div class="data-row">
-            <span class="data-row-label">GC</span>
-            <span class="data-row-value">Ridgehouse Construction</span>
-          </div>
-        </div>
-        <div class="milestone">
-          <div class="milestone-label">Key Milestone</div>
-          <div class="milestone-text">Interior finishes — Cabinets & Carpet Phase I</div>
-        </div>
-      </div>
-
-    </div>
+    <div class="cards" id="cards-container"></div>
 
     <!-- SUMMARY BAR -->
     <div class="summary">
       <div class="summary-item">
-        <span class="summary-value">696</span>
+        <span class="summary-value" id="sum-units">—</span>
         <span class="summary-label">Units Under Construction</span>
       </div>
       <div class="summary-divider"></div>
       <div class="summary-item">
-        <span class="summary-value">$154.7M</span>
+        <span class="summary-value" id="sum-value">—</span>
         <span class="summary-label">Total Construction Value</span>
       </div>
       <div class="summary-divider"></div>
       <div class="summary-item">
-        <span class="summary-value">3</span>
+        <span class="summary-value" id="sum-projects">—</span>
         <span class="summary-label">Active Projects</span>
       </div>
     </div>
@@ -490,9 +352,111 @@
     <!-- FOOTER -->
     <div class="footer">
       <div class="footer-left">Ridgehouse Companies</div>
-      <div class="footer-right">Data as of March 2026</div>
+      <div class="footer-right" id="footer-date"></div>
     </div>
 
   </div>
+
+  <script>
+    (function() {
+      var d = window.CONSTRUCTION_DATA;
+      if (!d) return;
+
+      // Format date
+      var date = new Date(d.report_date + 'T12:00:00');
+      var dateStr = date.toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' });
+      document.getElementById('header-date').textContent = dateStr;
+      document.getElementById('footer-date').textContent = 'Data as of ' + dateStr;
+
+      // Summary bar
+      var ps = d.portfolio_summary;
+      document.getElementById('sum-units').textContent = ps.total_units;
+      document.getElementById('sum-value').textContent = ps.total_contract_value;
+      document.getElementById('sum-projects').textContent = ps.active_projects;
+
+      // Build cards
+      var container = document.getElementById('cards-container');
+      var projectOrder = ['aster', 'renza', 'hawk_ridge'];
+
+      projectOrder.forEach(function(key) {
+        var p = d.projects[key];
+        var draw = d.draws[key];
+        if (!p) return;
+
+        var pctDisplay = (p.pct_complete * 100).toFixed(1) + '%';
+
+        // Calculate months remaining
+        var finishDate = new Date(p.finish_date + 'T12:00:00');
+        var now = new Date();
+        var monthsRemaining = Math.max(0, Math.round((finishDate - now) / (1000 * 60 * 60 * 24 * 30.44)));
+
+        // Estimate completion quarter
+        var finishQ = 'Q' + (Math.floor(finishDate.getMonth() / 3) + 1) + ' ' + finishDate.getFullYear();
+
+        // Start quarter
+        var startDate = new Date(p.start_date + 'T12:00:00');
+        var startQ = 'Q' + (Math.floor(startDate.getMonth() / 3) + 1) + ' ' + startDate.getFullYear();
+
+        // Badge class
+        var badgeClass = p.status === 'Under Construction' ? 'badge--yellow' : 'badge--blue';
+
+        // Draw status
+        var drawHtml = '';
+        if (draw) {
+          var statusClass = 'draw-status--draft';
+          var statusLabel = draw.status;
+          if (draw.days_until < 0 && draw.status !== 'Funded' && draw.status !== 'Payments Released') {
+            statusClass = 'draw-status--overdue';
+            statusLabel = draw.status + ' (Overdue)';
+          } else if (draw.status === 'Submitted') {
+            statusClass = 'draw-status--submitted';
+          } else if (draw.status === 'Funded' || draw.status === 'Payments Released') {
+            statusClass = 'draw-status--funded';
+          }
+          drawHtml = '<hr class="data-divider"><div class="data-row"><span class="data-row-label">Next Draw</span><span class="draw-status ' + statusClass + '">' + statusLabel + '</span></div>';
+        }
+
+        var cardHtml = '' +
+          '<div class="card">' +
+            '<span class="badge ' + badgeClass + '">' + p.status + '</span>' +
+            '<div class="card-header">' +
+              '<div class="card-name">' + p.display_name + '</div>' +
+              '<div class="card-location">' + p.location + '</div>' +
+            '</div>' +
+            '<div class="progress-section">' +
+              '<div class="progress-label">' +
+                '<span class="progress-label-text">Progress</span>' +
+                '<span class="progress-pct">' + pctDisplay + '</span>' +
+              '</div>' +
+              '<div class="progress-bar-track">' +
+                '<div class="progress-bar-fill" style="width: ' + pctDisplay + '"></div>' +
+              '</div>' +
+            '</div>' +
+            '<div class="card-data">' +
+              '<div class="data-row"><span class="data-row-label">Units</span><span class="data-row-value">' + p.units + '</span></div>' +
+              '<hr class="data-divider">' +
+              '<div class="data-row"><span class="data-row-label">Contract</span><span class="data-row-value">' + p.contract_value + '</span></div>' +
+              '<hr class="data-divider">' +
+              '<div class="data-row"><span class="data-row-label">Lender</span><span class="data-row-value">' + p.lender + '</span></div>' +
+              '<hr class="data-divider">' +
+              '<div class="data-row"><span class="data-row-label">Est. Completion</span><span class="data-row-value">' + finishQ + '</span></div>' +
+              '<hr class="data-divider">' +
+              '<div class="data-row"><span class="data-row-label">GC</span><span class="data-row-value">' + p.gc + '</span></div>' +
+              '<hr class="data-divider">' +
+              '<div class="data-row"><span class="data-row-label">Start</span><span class="data-row-value">' + startQ + '</span></div>' +
+              '<hr class="data-divider">' +
+              '<div class="data-row"><span class="data-row-label">Months Remaining</span><span class="data-row-value">~' + monthsRemaining + '</span></div>' +
+              drawHtml +
+            '</div>' +
+            '<div class="milestone">' +
+              '<div class="milestone-label">Key Milestone</div>' +
+              '<div class="milestone-text">' + p.key_milestone + '</div>' +
+            '</div>' +
+          '</div>';
+
+        container.insertAdjacentHTML('beforeend', cardHtml);
+      });
+    })();
+  </script>
 </body>
 </html>

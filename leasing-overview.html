@@ -293,17 +293,20 @@
     .lo-card-metrics {
       display: grid;
       grid-template-columns: 1fr 1fr;
+      grid-template-rows: 1fr 1fr;
       gap: 12px;
       flex: 1;
+      min-height: 0;
     }
 
     .lo-card-metric {
       background: rgba(255,255,255,0.03);
       border-radius: 10px;
-      padding: 12px 14px;
+      padding: 16px 14px;
       display: flex;
       flex-direction: column;
-      gap: 4px;
+      justify-content: center;
+      gap: 6px;
     }
 
     .lo-card-metric-label {
@@ -428,6 +431,14 @@
             <div class="lo-card-metric">
               <div class="lo-card-metric-label">Traffic</div>
               <div class="lo-card-metric-value">${p.weekly_traffic ?? '—'}</div>
+            </div>
+            <div class="lo-card-metric">
+              <div class="lo-card-metric-label">Net Leases</div>
+              <div class="lo-card-metric-value" style="color: ${p.net_leases != null ? (p.net_leases > 0 ? 'var(--green)' : (p.net_leases < 0 ? 'var(--red)' : 'var(--text-secondary)')) : 'var(--text-muted)'}">${p.net_leases != null ? (p.net_leases > 0 ? '+' + p.net_leases : p.net_leases) : '—'}</div>
+            </div>
+            <div class="lo-card-metric">
+              <div class="lo-card-metric-label">Weekly Goal</div>
+              <div class="lo-card-metric-value">${p.weekly_goal || '—'}</div>
             </div>
           </div>
 

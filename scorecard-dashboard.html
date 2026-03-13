@@ -2,61 +2,18 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=1920">
+  <meta name="viewport" content="width=1920, height=1080">
   <meta http-equiv="refresh" content="3600">
   <title>Company Scorecard — Ridgehouse Companies</title>
   <link rel="stylesheet" href="style.css">
-  <style>
-    /* Scorecard-specific overrides */
-    .scorecard-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr 1fr;
-      gap: 28px;
-      flex: 1;
-    }
-
-    .scorecard-tile {
-      background: var(--bg-card);
-      border: 1px solid var(--border);
-      border-radius: 16px;
-      padding: 36px 32px;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-    }
-
-    .scorecard-tile .tile-label {
-      font-family: var(--font-body);
-      font-weight: 700;
-      font-size: 18px;
-      text-transform: uppercase;
-      letter-spacing: 2px;
-      color: var(--text-secondary);
-      margin-bottom: 16px;
-    }
-
-    .scorecard-tile .tile-value {
-      font-family: var(--font-headline);
-      font-size: 80px;
-      line-height: 1;
-      color: var(--text-primary);
-    }
-
-    .scorecard-tile .tile-sublabel {
-      font-family: var(--font-body);
-      font-size: 18px;
-      color: var(--text-muted);
-      margin-top: 12px;
-    }
-  </style>
+  <script src="data/leasing-data.js"></script>
+  <script src="data/construction-data.js"></script>
 </head>
 <body>
-  <div class="dashboard">
+  <div class="dashboard" id="dashboard">
 
-    <!-- Header -->
-    <div class="header">
+    <!-- HEADER -->
+    <header class="header">
       <div class="header-left">
         <svg class="header-logo" viewBox="0 0 510 435">
           <path d="M310,181.5V110L110,180V325H400V150ZM120,315V187.09l180-63V185L200,220v95Zm90,0V227.09l90-31.5V315Zm180,0H310V192.09l80-28Z" fill="white"/>
@@ -68,59 +25,182 @@
       </div>
       <div class="header-date">
         <div class="date-label">Week Ending</div>
-        March 8, 2026
+        <div id="report-date">—</div>
       </div>
-    </div>
+    </header>
 
-    <!-- Metric Tiles -->
-    <div class="scorecard-grid">
+    <!-- SCORECARD GRID -->
+    <div class="sc-grid">
 
       <!-- Row 1 -->
-      <div class="scorecard-tile">
-        <div class="tile-label">Total Portfolio</div>
-        <div class="tile-value">2,500+</div>
-        <div class="tile-sublabel">13 Projects</div>
+      <div class="sc-tile">
+        <div class="sc-tile-accent" style="background: var(--copper-light)"></div>
+        <div class="sc-tile-label">Total Portfolio</div>
+        <div class="sc-tile-value">2,500+</div>
+        <div class="sc-tile-sub">13 Projects</div>
       </div>
 
-      <div class="scorecard-tile">
-        <div class="tile-label">Portfolio Occupancy</div>
-        <div class="tile-value text-yellow">70.9%</div>
-        <div class="tile-sublabel">529 of 746 lease-up units</div>
+      <div class="sc-tile">
+        <div class="sc-tile-accent" id="occ-accent"></div>
+        <div class="sc-tile-label">Portfolio Occupancy</div>
+        <div class="sc-tile-value" id="occ-value">—</div>
+        <div class="sc-tile-sub" id="occ-sub"></div>
       </div>
 
-      <div class="scorecard-tile">
-        <div class="tile-label">Units Under Construction</div>
-        <div class="tile-value">696</div>
-        <div class="tile-sublabel">3 Active Projects</div>
+      <div class="sc-tile">
+        <div class="sc-tile-accent" style="background: var(--copper-light)"></div>
+        <div class="sc-tile-label">Units Under Construction</div>
+        <div class="sc-tile-value" id="construction-units">—</div>
+        <div class="sc-tile-sub" id="construction-sub"></div>
       </div>
 
       <!-- Row 2 -->
-      <div class="scorecard-tile">
-        <div class="tile-label">Active Lease-Ups</div>
-        <div class="tile-value">4</div>
-        <div class="tile-sublabel">746 units in lease-up</div>
+      <div class="sc-tile">
+        <div class="sc-tile-accent" style="background: var(--copper-light)"></div>
+        <div class="sc-tile-label">Active Lease-Ups</div>
+        <div class="sc-tile-value" id="leaseup-count">—</div>
+        <div class="sc-tile-sub" id="leaseup-sub"></div>
       </div>
 
-      <div class="scorecard-tile">
-        <div class="tile-label">Weekly Net Leases</div>
-        <div class="tile-value text-green">15</div>
-        <div class="tile-sublabel">Week of Mar 8, 2026</div>
+      <div class="sc-tile">
+        <div class="sc-tile-accent" id="net-accent"></div>
+        <div class="sc-tile-label">Weekly Net Leases</div>
+        <div class="sc-tile-value" id="net-value">—</div>
+        <div class="sc-tile-sub" id="net-sub"></div>
       </div>
 
-      <div class="scorecard-tile">
-        <div class="tile-label">Gap to 90% Goal</div>
-        <div class="tile-value text-red">138</div>
-        <div class="tile-sublabel">units across 4 properties</div>
+      <div class="sc-tile">
+        <div class="sc-tile-accent" id="gap-accent"></div>
+        <div class="sc-tile-label">Gap to 90% Goal</div>
+        <div class="sc-tile-value" id="gap-value">—</div>
+        <div class="sc-tile-sub" id="gap-sub"></div>
       </div>
 
     </div>
 
-    <!-- Footer -->
-    <div class="footer">
-      <div class="footer-brand">RIDGEHOUSE COMPANIES</div>
-      <div>Data as of March 8, 2026</div>
-    </div>
+    <!-- FOOTER -->
+    <footer class="footer">
+      <span class="footer-brand">RIDGEHOUSE COMPANIES</span>
+      <span id="footer-date">—</span>
+    </footer>
 
   </div>
+
+  <style>
+    .dashboard {
+      padding: 36px 48px 24px;
+      gap: 24px;
+    }
+
+    .sc-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      grid-template-rows: 1fr 1fr;
+      gap: 24px;
+      flex: 1;
+      min-height: 0;
+    }
+
+    .sc-tile {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 36px 32px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+      box-shadow:
+        0 2px 8px rgba(0,0,0,0.3),
+        0 0 1px rgba(244,148,102,0.05);
+    }
+
+    .sc-tile-accent {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 4px;
+    }
+
+    .sc-tile-label {
+      font-family: var(--font-body);
+      font-weight: 700;
+      font-size: 18px;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      color: var(--text-secondary);
+      margin-bottom: 16px;
+    }
+
+    .sc-tile-value {
+      font-family: var(--font-headline);
+      font-size: 80px;
+      line-height: 1;
+      color: var(--text-primary);
+    }
+
+    .sc-tile-sub {
+      font-family: var(--font-body);
+      font-size: 18px;
+      color: var(--text-muted);
+      margin-top: 12px;
+    }
+  </style>
+
+  <script>
+    (function() {
+      const d = window.LEASING_DATA;
+      if (!d) return;
+
+      const pm = d.portfolio_metrics;
+      const props = d.property_metrics;
+
+      // Construction metrics from construction-data.js
+      const cd = window.CONSTRUCTION_DATA;
+      if (cd && cd.portfolio_summary) {
+        document.getElementById('construction-units').textContent = cd.portfolio_summary.total_units.toLocaleString();
+        document.getElementById('construction-sub').textContent = cd.portfolio_summary.active_projects + ' Active Projects · ' + cd.portfolio_summary.total_contract_value;
+      }
+
+      // Format date
+      const date = new Date(d.report_date + 'T12:00:00');
+      const dateStr = date.toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' });
+      document.getElementById('report-date').textContent = dateStr;
+      document.getElementById('footer-date').textContent = 'Data as of ' + dateStr;
+
+      // Portfolio Occupancy
+      const occPct = (pm.portfolio_occ_pct * 100).toFixed(1);
+      const occColor = pm.portfolio_occ_pct >= 0.85 ? 'green' : (pm.portfolio_occ_pct >= 0.75 ? 'yellow' : 'red');
+      document.getElementById('occ-value').textContent = occPct + '%';
+      document.getElementById('occ-value').style.color = 'var(--' + occColor + ')';
+      document.getElementById('occ-accent').style.background = 'var(--' + occColor + ')';
+      document.getElementById('occ-sub').textContent = pm.total_occupied + ' of ' + pm.total_units + ' lease-up units';
+
+      // Active Lease-Ups
+      document.getElementById('leaseup-count').textContent = pm.properties_with_data;
+      document.getElementById('leaseup-sub').textContent = pm.total_units + ' units in lease-up';
+
+      // Weekly Net Leases
+      let totalNet = 0;
+      Object.values(props).forEach(p => { if (p.net_leases) totalNet += p.net_leases; });
+      const netColor = totalNet > 0 ? 'green' : (totalNet < 0 ? 'red' : 'text-secondary');
+      document.getElementById('net-value').textContent = (totalNet > 0 ? '+' : '') + totalNet;
+      document.getElementById('net-value').style.color = 'var(--' + netColor + ')';
+      document.getElementById('net-accent').style.background = 'var(--' + netColor + ')';
+      document.getElementById('net-sub').textContent = 'Week of ' + date.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
+
+      // Gap to 90%
+      const gap = pm.total_gap_to_goal;
+      const gapColor = gap > 50 ? 'red' : (gap > 20 ? 'yellow' : 'green');
+      document.getElementById('gap-value').textContent = gap;
+      document.getElementById('gap-value').style.color = 'var(--' + gapColor + ')';
+      document.getElementById('gap-accent').style.background = 'var(--' + gapColor + ')';
+      document.getElementById('gap-sub').textContent = 'units across ' + pm.properties_total + ' properties';
+    })();
+  </script>
 </body>
 </html>

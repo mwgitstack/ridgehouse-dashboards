@@ -483,6 +483,19 @@
             </div>
           </div>
 
+          <div class="sr-velocity">
+            <div class="sr-velocity-item">
+              <div class="sr-velocity-label">Move-Ins Needed</div>
+              <div class="sr-velocity-value" style="color: var(--text-primary)">${p.move_ins_needed}</div>
+              <div class="sr-velocity-unit">to reach 90% occ</div>
+            </div>
+            <div class="sr-velocity-item">
+              <div class="sr-velocity-label">30-Day Net Exposure</div>
+              <div class="sr-velocity-value" style="color: ${p.net_exposure_next_30 != null ? (p.net_exposure_next_30 >= 0 ? 'var(--green)' : 'var(--red)') : 'var(--text-muted)'}">${p.net_exposure_next_30 != null ? (p.net_exposure_next_30 >= 0 ? '+' + p.net_exposure_next_30 : p.net_exposure_next_30) : '—'}</div>
+              <div class="sr-velocity-unit">move-ins minus move-outs</div>
+            </div>
+          </div>
+
           <div class="sr-gap-banner ${isAhead ? 'sr-gap-banner-green' : 'sr-gap-banner-red'}">
             <span class="sr-gap-label">Units to 90%</span>
             <span class="sr-gap-value" style="color: var(--${statusColor})">${p.gap_to_90_occ_units}</span>
